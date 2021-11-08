@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import API_KEY from "../API";
 
-function BasicFinancials() {
+function BasicFinancials({ selectedTicker }) {
   const [companyMetrics, setCompanyMetrics] = useState({});
 
   useEffect(
     () =>
       fetch(
-        `https://finnhub.io/api/v1/stock/metric?symbol=msft&metric=all&token=${API_KEY}`
+        `https://finnhub.io/api/v1/stock/metric?symbol=${selectedTicker}&metric=all&token=${API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => {
           setCompanyMetrics(data.metric);
         }),
-    []
+    [selectedTicker]
   );
 
   //Snapshot
@@ -33,15 +33,8 @@ function BasicFinancials() {
   const bookValuePerShareAnnual = companyMetrics["bookValuePerShareAnnual"];
   // Debt-to-Equity Ratio (Annual)
   const debtToEquity = companyMetrics["totalDebt/totalEquityAnnual"];
-  console.log(debtToEquity);
-
   // Free Cash Flow (Annual)
   const freeCashFlow = companyMetrics["freeCashFlowAnnual"];
-
-  console.log(freeCashFlow);
-
-  console.log(bookValuePerShareAnnual);
-  console.log(companyMetrics);
 
   return (
     <>

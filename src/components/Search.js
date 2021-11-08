@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import API_KEY from "../API";
 import "./Search.css";
 
-function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompanyDetails, loading,}) {
+function Search({
+  setSearchedTickers,
+  searchedTickers,
+  companyDetails,
+  setCompanyDetails,
+  loading,
+}) {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleInputChange(e) {
@@ -18,24 +24,35 @@ function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompan
         if (searchedTickers.includes(data.result[0].symbol)) {
           alert("Read your buttons, it in der cuh");
         } else {
-          // setSearchedTickers([...searchedTickers, data.result[0].symbol]);
-          // alert(`Added ${data.result[0].description} to your favorite stocks`);
-          fetch('http://localhost:3000/symbols',{
-            method: 'POST',
+          setSearchedTickers([...searchedTickers, data.result[0].symbol]);
+          alert(`Added ${data.result[0].description} to your favorite stocks`);
+          fetch("http://localhost:3000/symbols", {
+            method: "POST",
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              Accept: "application/json",
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify({symbol: data.result[0].symbol,
-            id: data.result[0].symbol})
-          }).then(res=> res.json()).then(data => {
-            fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${data.symbol}&token=${API_KEY}`)
-            .then(res=> res.json())
-            .then(data=> setCompanyDetails((companyDetails)=>[...companyDetails, data]))
+            body: JSON.stringify({
+              symbol: data.result[0].symbol,
+              id: data.result[0].symbol,
+            }),
           })
+            .then((res) => res.json())
+            .then((data) => {
+              fetch(
+                `https://finnhub.io/api/v1/stock/profile2?symbol=${data.symbol}&token=${API_KEY}`
+              )
+                .then((res) => res.json())
+                .then((data) =>
+                  setCompanyDetails((companyDetails) => [
+                    ...companyDetails,
+                    data,
+                  ])
+                );
+            });
         }
       })
-      .catch(() => alert("company not in DB"));
+      .catch((error) => alert(error));
   }
 
   return (
