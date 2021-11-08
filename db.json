@@ -3,6 +3,18 @@
     {
       "symbol": "AAPL",
       "id": 1
+    },
+    {
+      "symbol": "MSFT",
+      "id": 2
+    },
+    {
+      "symbol": "FOOD.TO",
+      "id": 3
+    },
+    {
+      "symbol": "HLFFF",
+      "id": 4
     }
   ]
 }
