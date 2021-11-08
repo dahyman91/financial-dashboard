@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import CardContainer from "./CardContainer";
 import Nav from "./Nav";
+import ComponentPlayground from "./ComponentPlayground";
 import API_KEY from "../API";
+
 
 function App() {
   const [searchedTickers, setSearchedTickers] = useState([]);
@@ -33,6 +35,7 @@ function App() {
         companyDetails={companyDetails}
         setCompanyDetails={setCompanyDetails}
       />
+      <ComponentPlayground />
     </>
   );
 }
