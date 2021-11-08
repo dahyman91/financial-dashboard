@@ -1,0 +1,15 @@
+.search-container {
+  display: flex;
+}
+
+.search-text {
+  margin: auto;
+}
+
+.search-form {
+  margin: auto;
+}
+.search .searchBtn:hover {
+  cursor: pointer;
+  background-color: #857f7f;
+}
