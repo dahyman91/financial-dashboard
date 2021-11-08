@@ -6,9 +6,7 @@ function ComponentPlayground() {
     <div
       style={{
         borderTop: "1px solid black",
-        position: "absolute",
         width: "100%",
-        top: "50%",
       }}
     >
       <BasicFinancials />
