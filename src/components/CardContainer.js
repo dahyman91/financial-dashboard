@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Card from "./Card";
 import API_KEY from "../API";
 
-function CardContainer({ searchedTickers, companyDetails, setCompanyDetails }) {
+function CardContainer({ companyDetails, setCompanyDetails }) {
 
   return (
     <div className="ui cards">
       {companyDetails.map((element) => (
-        <Card key={element.name} logo={element.logo}/>
+        <Card key={element.name} logo={element.logo} companyDetails= {companyDetails} setCompanyDetails={setCompanyDetails} id={element.ticker}/>
       ))}
     </div>
   );

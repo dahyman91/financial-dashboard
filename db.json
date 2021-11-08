@@ -1,20 +1,21 @@
 {
   "symbols": [
     {
-      "symbol": "AAPL",
-      "id": 1
+
+      "symbol": "BEN",
+      "id": "BEN"
+    },
+    {
+      "symbol": "TSLA",
+      "id": "TSLA"
+    },
+    {
+      "symbol": "AMZN",
+      "id": "AMZN"
     },
     {
       "symbol": "MSFT",
-      "id": 2
-    },
-    {
-      "symbol": "FOOD.TO",
-      "id": 3
-    },
-    {
-      "symbol": "HLFFF",
-      "id": 4
+      "id": "MSFT"
     }
   ]
 }

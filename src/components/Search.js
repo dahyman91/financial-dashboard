@@ -26,7 +26,8 @@ function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompan
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({symbol: data.result[0].symbol})
+            body: JSON.stringify({symbol: data.result[0].symbol,
+            id: data.result[0].symbol})
           }).then(res=> res.json()).then(data => {
             fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${data.symbol}&token=${API_KEY}`)
             .then(res=> res.json())
