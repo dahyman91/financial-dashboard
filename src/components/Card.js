@@ -1,6 +1,17 @@
 import React from "react";
 
-function Card({ company, logo, name }) {
+function Card({ company, logo, name, id, companyDetails, setCompanyDetails}) {
+  function handleDelete(){
+    fetch(`http://localhost:3000/symbols/${id}`,{
+      method:'DELETE'
+    }).then(
+      setCompanyDetails((companyDetails)=>{
+        return companyDetails.filter((company)=>{
+          return company.ticker !== id
+        })
+      })
+    )
+  }
   return (
     <>
       <div className="ui card">
@@ -19,9 +30,7 @@ function Card({ company, logo, name }) {
           </div>
         </div>
         <div className="extra content">
-          <a>
-            <i className="users icon"></i>2 Members
-          </a>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </>
