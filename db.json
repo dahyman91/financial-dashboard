@@ -1,24 +1,36 @@
 {
   "symbols": [
     {
-      "symbol": "BEN",
-      "id": "BEN"
-    },
-    {
-      "symbol": "AMZN",
-      "id": "AMZN"
-    },
-    {
-      "symbol": "MSFT",
-      "id": "MSFT"
-    },
-    {
       "symbol": "TSLA",
       "id": "TSLA"
     },
     {
+      "symbol": "IBM",
+      "id": "IBM"
+    },
+    {
+      "symbol": "AINC",
+      "id": "AINC"
+    },
+    {
+      "symbol": "0NRQ.L",
+      "id": "0NRQ.L"
+    },
+    {
+      "symbol": "F",
+      "id": "F"
+    },
+    {
+      "symbol": "HMC.AX",
+      "id": "HMC.AX"
+    },
+    {
       "symbol": "FOOD.TO",
       "id": "FOOD.TO"
+    },
+    {
+      "symbol": "AAPL",
+      "id": "AAPL"
     }
   ]
 }
