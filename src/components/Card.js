@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ company, logo, name, id, companyDetails, setCompanyDetails}) {
+function Card({ company, logo, name, id, companyDetails, setCompanyDetails, ipo}) {
   function handleDelete(){
     fetch(`http://localhost:3000/symbols/${id}`,{
       method:'DELETE'
@@ -24,9 +24,9 @@ function Card({ company, logo, name, id, companyDetails, setCompanyDetails}) {
           <p className="hidden content">{name}</p>
         </div>
         <div className="content">
-          <a className="header">{company}</a>
+          <a className="header">{name}</a>
           <div className="meta">
-            <span className="date">Created in Sep 2014</span>
+            <span className="date">IPO: {ipo}</span>
           </div>
         </div>
         <div className="extra content">
