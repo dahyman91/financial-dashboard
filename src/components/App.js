@@ -9,6 +9,7 @@ import API_KEY from "../API";
 function App() {
   const [searchedTickers, setSearchedTickers] = useState([]);
   const [companyDetails, setCompanyDetails] = useState([]);
+  const [loading, setLoading] = useState(false)
   useEffect(()=>{
     fetch('http://localhost:3000/symbols')
     .then(res => res.json())

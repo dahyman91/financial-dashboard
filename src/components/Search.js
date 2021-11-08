@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API_KEY from "../API";
 import "./Search.css";
 
-function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompanyDetails}) {
+function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompanyDetails, loading,}) {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleInputChange(e) {
