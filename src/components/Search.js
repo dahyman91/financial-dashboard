@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API_KEY from "../API";
 import "./Search.css";
 
-function Search({ setSearchedTickers, searchedTickers }) {
+function Search({ setSearchedTickers, searchedTickers, companyDetails, setCompanyDetails}) {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleInputChange(e) {
@@ -18,8 +18,20 @@ function Search({ setSearchedTickers, searchedTickers }) {
         if (searchedTickers.includes(data.result[0].symbol)) {
           alert("Read your buttons, it in der cuh");
         } else {
-          setSearchedTickers([...searchedTickers, data.result[0].symbol]);
-          alert(`Added ${data.result[0].description} to your favorite stocks`);
+          // setSearchedTickers([...searchedTickers, data.result[0].symbol]);
+          // alert(`Added ${data.result[0].description} to your favorite stocks`);
+          fetch('http://localhost:3000/symbols',{
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({symbol: data.result[0].symbol})
+          }).then(res=> res.json()).then(data => {
+            fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${data.symbol}&token=${API_KEY}`)
+            .then(res=> res.json())
+            .then(data=> setCompanyDetails((companyDetails)=>[...companyDetails, data]))
+          })
         }
       })
       .catch(() => alert("company not in DB"));
