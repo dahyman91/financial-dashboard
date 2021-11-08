@@ -2,19 +2,19 @@
   "symbols": [
     {
       "symbol": "BEN",
-      "id": 1
+      "id": "BEN"
     },
     {
       "symbol": "TSLA",
-      "id": 2
+      "id": "TSLA"
     },
     {
       "symbol": "AMZN",
-      "id": 3
+      "id": "AMZN"
     },
     {
       "symbol": "MSFT",
-      "id": 4
+      "id": "MSFT"
     }
   ]
 }
