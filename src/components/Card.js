@@ -32,7 +32,7 @@ function Card({
             <img
               alt="logo"
               src={logo}
-              style={{ height: "258px" }}
+              style={{ height: "auto", width: "258px" }}
               className="visible content"
             />
             <p className="hidden content">{name}</p>

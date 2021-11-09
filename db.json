@@ -5,10 +5,6 @@
       "id": "TSLA"
     },
     {
-      "symbol": "IBM",
-      "id": "IBM"
-    },
-    {
       "symbol": "AINC",
       "id": "AINC"
     },
@@ -23,10 +19,6 @@
     {
       "symbol": "HMC.AX",
       "id": "HMC.AX"
-    },
-    {
-      "symbol": "FOOD.TO",
-      "id": "FOOD.TO"
     },
     {
       "symbol": "AAPL",
