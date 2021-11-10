@@ -20,10 +20,17 @@ function Search({
     fetch(`https://finnhub.io/api/v1/search?q=${searchTerm}&token=${API_KEY}`)
       .then((res) => res.json())
       .then((data) => {
+        // console.log("data", data);
+        // // console.log("searchedTickers", searchedTickers);
+
+        // data.map((datum) => console.log(datum));
+
         if (searchedTickers.includes(data.result[0].symbol)) {
           alert("Read your buttons, it in der cuh");
         } else {
+          console.log("st", searchedTickers);
           setSearchedTickers([...searchedTickers, data.result[0].symbol]);
+          console.log(searchedTickers);
           alert(`Added ${data.result[0].description} to your favorite stocks`);
           fetch("http://localhost:3000/symbols", {
             method: "POST",

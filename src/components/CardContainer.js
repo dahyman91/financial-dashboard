@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 function CardContainer({
@@ -6,6 +6,13 @@ function CardContainer({
   setCompanyDetails,
   setSelectedTicker,
 }) {
+  const [count, setCount] = useState(null);
+
+  useEffect(
+    () => setInterval(() => setCount((count) => (count += 1)), 10000),
+    []
+  );
+
   return (
     <div style={{ width: "90vw", margin: "2% auto" }}>
       <div className="ui six column stackable grid">
@@ -20,6 +27,7 @@ function CardContainer({
             ipo={element.ipo}
             company={element}
             setSelectedTicker={setSelectedTicker}
+            count={count}
           />
         ))}
       </div>
