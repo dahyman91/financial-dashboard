@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import Search from "./Search";
 import CardContainer from "./CardContainer";
 import Nav from "./Nav";
@@ -7,17 +8,25 @@ import API_KEY from "../API";
 import Ticker from "./Ticker";
 import "./style.css";
 
-function App() {
+function Favorites() {
   const [searchedTickers, setSearchedTickers] = useState([]);
   const [companyDetails, setCompanyDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedTicker, setSelectedTicker] = useState("msft");
+  const [selectedTicker, setSelectedTicker] = useState("");
+  const [curPage, setCurPage] = useState("dashboard");
 
   useEffect(() => {
     fetch("http://localhost:3000/symbols")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+        // setSearchedTickers(data);
+        setSelectedTicker(data[0].symbol);
         data.map((datum) => {
+          setSearchedTickers((searchedTickers) => [
+            ...searchedTickers,
+            datum.symbol,
+          ]);
           fetch(
             `https://finnhub.io/api/v1/stock/profile2?symbol=${datum.symbol}&token=${API_KEY}`
           )
@@ -29,26 +38,42 @@ function App() {
       });
   }, []);
   return (
-    <>
-      <Nav />
+    <Switch>
+      <Route path="/favorites">
+        <>
+          {/* <Ticker /> */}
+          <Nav
+            curPage={curPage}
+            setCurPage={setCurPage}
+            selectedTicker={selectedTicker}
+            searchedTickers={searchedTickers}
+          />
 
-      {/* <div className="ui active centered inline loader">Header</div> */}
-      <Search
-        setSearchedTickers={setSearchedTickers}
-        searchedTickers={searchedTickers}
-        companyDetails={companyDetails}
-        setCompanyDetails={setCompanyDetails}
-      />
-      <Ticker />
-      <CardContainer
-        searchedTickers={searchedTickers}
-        companyDetails={companyDetails}
-        setCompanyDetails={setCompanyDetails}
-        setSelectedTicker={setSelectedTicker}
-      />
-      <ComponentPlayground selectedTicker={selectedTicker} />
-    </>
+          {/* <div className="ui active centered inline loader">Header</div> */}
+          <Search
+            setSearchedTickers={setSearchedTickers}
+            searchedTickers={searchedTickers}
+            companyDetails={companyDetails}
+            setCompanyDetails={setCompanyDetails}
+          />
+
+          <CardContainer
+            searchedTickers={searchedTickers}
+            companyDetails={companyDetails}
+            setCompanyDetails={setCompanyDetails}
+            setSelectedTicker={setSelectedTicker}
+          />
+        </>
+      </Route>
+      <Route path="/dashboard/:selectedTicker">
+        <ComponentPlayground
+          setSelectedTicker={setSelectedTicker}
+          selectedTicker={selectedTicker}
+          searchedTickers={searchedTickers}
+        />
+      </Route>
+    </Switch>
   );
 }
 
-export default App;
+export default Favorites;

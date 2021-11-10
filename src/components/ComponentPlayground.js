@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BasicFinancials from "./BasicFinancials";
+import Nav from "./Nav";
 import Widget from "./Widget";
-import Ticker from "./Ticker";
+import StockDropdown from "./StockDropdown";
+import { useParams, useRouteMatch } from "react-router-dom";
 
-function ComponentPlayground({ selectedTicker }) {
+function ComponentPlayground({
+  selectedTicker,
+  setSelectedTicker,
+  searchedTickers,
+}) {
+  const match = useRouteMatch();
+  const params = useParams();
+
+  // console.log(params.selectedTicker);
+
+  useEffect(() => setSelectedTicker(params.selectedTicker), []);
+
   return (
     <>
+      <Nav />
+      <StockDropdown
+        searchedTickers={searchedTickers}
+        setSelectedTicker={setSelectedTicker}
+      />
       <div
         style={{
-          borderTop: "1px solid black",
           width: "100%",
-          position: "absolute",
-          top: "200vh",
         }}
       >
-        <BasicFinancials selectedTicker={selectedTicker} />
+        {selectedTicker ? (
+          <BasicFinancials selectedTicker={selectedTicker} />
+        ) : null}
         <Widget selectedTicker={selectedTicker} />
-        <Ticker />
       </div>
     </>
   );

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import API_KEY from "../API";
+import { Link } from "react-router-dom";
 
 function Card({
   logo,
@@ -8,7 +10,17 @@ function Card({
   setCompanyDetails,
   ipo,
   setSelectedTicker,
+  count,
+  setCount,
 }) {
+  const [price, setPrice] = useState(0);
+
+  useEffect(() => {
+    fetch(`https://finnhub.io/api/v1/quote?symbol=${id}&token=${API_KEY}`)
+      .then((res) => res.json())
+      .then((data) => setPrice(data.c));
+  }, [count]);
+
   function handleDelete() {
     fetch(`http://localhost:3000/symbols/${id}`, {
       method: "DELETE",
@@ -24,6 +36,7 @@ function Card({
   function handleClick() {
     setSelectedTicker(id);
   }
+
   return (
     <>
       <div class="column">
@@ -37,8 +50,8 @@ function Card({
           <div className="ui slide masked reveal image">
             <div className="visible content first-card">
               <div className="first-card-info">
-                <h2 className="price">Price</h2>
-                <h3 className="ticker">Ticker</h3>
+                <h2 className="price">{`${price} USD`}</h2>
+                <h3 className="ticker">{id}</h3>
               </div>
             </div>
             <div className="hidden content image-container">
@@ -49,9 +62,13 @@ function Card({
               className="content"
               style={{ background: "white", textAlign: "center" }}
             >
-              <a onClick={handleClick} className="header">
+              <Link
+                to={`/dashboard/${id}`}
+                onClick={handleClick}
+                className="header"
+              >
                 {name}
-              </a>
+              </Link>
               <div className="meta">
                 <span className="date">IPO: {ipo}</span>
               </div>

@@ -1,10 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Nav() {
+function Nav({ curPage, setCurPage, selectedTicker, searchedTickers }) {
   return (
     <div class="ui tabular menu">
-      <a class="item active">Favorite Stocks</a>
-      <a class="item">Dashboard</a>
+      <Link
+        to="/favorites"
+        class={curPage === "dashboard" ? "item active" : "item"}
+      >
+        Favorite Stocks
+      </Link>
+      <Link
+        to={selectedTicker ? `/dashboard/${selectedTicker}` : "/favorites"}
+        class={curPage !== "dashboard" ? "item active" : "item"}
+      >
+        Dashboard
+      </Link>
     </div>
   );
 }

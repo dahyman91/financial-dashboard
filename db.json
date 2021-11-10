@@ -1,16 +1,20 @@
 {
   "symbols": [
     {
-      "symbol": "MSFT",
-      "id": "MSFT"
+      "symbol": "DNIEF",
+      "id": "DNIEF"
     },
     {
-      "symbol": "F",
-      "id": "F"
+      "symbol": "K",
+      "id": "K"
     },
     {
       "symbol": "AAPL",
       "id": "AAPL"
+    },
+    {
+      "symbol": "MSFT",
+      "id": "MSFT"
     }
   ]
 }
