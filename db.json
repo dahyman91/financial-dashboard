@@ -1,24 +1,12 @@
 {
   "symbols": [
     {
-      "symbol": "TSLA",
-      "id": "TSLA"
-    },
-    {
-      "symbol": "AINC",
-      "id": "AINC"
-    },
-    {
-      "symbol": "0NRQ.L",
-      "id": "0NRQ.L"
+      "symbol": "MSFT",
+      "id": "MSFT"
     },
     {
       "symbol": "F",
       "id": "F"
-    },
-    {
-      "symbol": "HMC.AX",
-      "id": "HMC.AX"
     },
     {
       "symbol": "AAPL",

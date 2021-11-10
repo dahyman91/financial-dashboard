@@ -27,25 +27,37 @@ function Card({
   return (
     <>
       <div class="column">
-        <div className="ui fluid card">
+        <div
+          className="ui fluid card"
+          style={{
+            filter: "drop-shadow(2px 2px 2px rgba(0,0,0,0.5))",
+            // borderRadius: "10%",
+          }}
+        >
           <div className="ui slide masked reveal image">
-            <img
-              alt="logo"
-              src={logo}
-              style={{ height: "auto", width: "258px" }}
-              className="visible content"
-            />
-            <p className="hidden content">{name}</p>
-            <div className="content">
+            <div className="visible content first-card">
+              <div className="first-card-info">
+                <h2 className="price">Price</h2>
+                <h3 className="ticker">Ticker</h3>
+              </div>
+            </div>
+            <div className="hidden content image-container">
+              <img className="logo" alt="logo" src={logo} />
+            </div>
+
+            <div
+              className="content"
+              style={{ background: "white", textAlign: "center" }}
+            >
               <a onClick={handleClick} className="header">
                 {name}
               </a>
               <div className="meta">
                 <span className="date">IPO: {ipo}</span>
               </div>
-            </div>
-            <div className="extra content">
-              <button onClick={handleDelete}>Delete</button>
+              <div className="extra content">
+                <button onClick={handleDelete}>Delete</button>
+              </div>
             </div>
           </div>
         </div>

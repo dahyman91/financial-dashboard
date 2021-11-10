@@ -13,3 +13,37 @@
   cursor: pointer;
   background-color: #857f7f;
 }
+
+.first-card {
+  background: white;
+  height: 250px;
+  display: flex;
+}
+
+.first-card-info {
+  width: 50%;
+  margin: auto;
+  margin-top: 30%;
+}
+
+.price {
+  text-align: center;
+  color: #7dc4bc;
+}
+
+.ticker {
+  color: #7dc4bc;
+  text-align: center;
+}
+
+.image-container {
+  background: white;
+  height: 80%;
+  display: flex;
+}
+
+.logo {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 20%;
+}
