@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import API_KEY from "../API";
-import "./Search.css";
 
 function Search({
   setSearchedTickers,

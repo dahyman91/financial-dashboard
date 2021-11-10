@@ -1,6 +1,7 @@
 import React from "react";
 import BasicFinancials from "./BasicFinancials";
 import Widget from "./Widget";
+import Ticker from "./Ticker";
 
 function ComponentPlayground({ selectedTicker }) {
   return (
@@ -15,6 +16,7 @@ function ComponentPlayground({ selectedTicker }) {
       >
         <BasicFinancials selectedTicker={selectedTicker} />
         <Widget selectedTicker={selectedTicker} />
+        <Ticker />
       </div>
     </>
   );

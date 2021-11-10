@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import ComponentPlayground from "./ComponentPlayground";
 import API_KEY from "../API";
 import Ticker from "./Ticker";
+import "./style.css";
 
 function App() {
   const [searchedTickers, setSearchedTickers] = useState([]);
@@ -29,24 +30,23 @@ function App() {
   }, []);
   return (
     <>
+      <Nav />
+
+      {/* <div className="ui active centered inline loader">Header</div> */}
+      <Search
+        setSearchedTickers={setSearchedTickers}
+        searchedTickers={searchedTickers}
+        companyDetails={companyDetails}
+        setCompanyDetails={setCompanyDetails}
+      />
       <Ticker />
-      <>
-        <Nav />
-        {/* <div className="ui active centered inline loader">Header</div> */}
-        <Search
-          setSearchedTickers={setSearchedTickers}
-          searchedTickers={searchedTickers}
-          companyDetails={companyDetails}
-          setCompanyDetails={setCompanyDetails}
-        />
-        <CardContainer
-          searchedTickers={searchedTickers}
-          companyDetails={companyDetails}
-          setCompanyDetails={setCompanyDetails}
-          setSelectedTicker={setSelectedTicker}
-        />
-        <ComponentPlayground selectedTicker={selectedTicker} />
-      </>
+      <CardContainer
+        searchedTickers={searchedTickers}
+        companyDetails={companyDetails}
+        setCompanyDetails={setCompanyDetails}
+        setSelectedTicker={setSelectedTicker}
+      />
+      <ComponentPlayground selectedTicker={selectedTicker} />
     </>
   );
 }
