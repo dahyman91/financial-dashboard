@@ -1,20 +1,3 @@
 {
-  "symbols": [
-    {
-      "symbol": "DNIEF",
-      "id": "DNIEF"
-    },
-    {
-      "symbol": "K",
-      "id": "K"
-    },
-    {
-      "symbol": "AAPL",
-      "id": "AAPL"
-    },
-    {
-      "symbol": "MSFT",
-      "id": "MSFT"
-    }
-  ]
+  "symbols": []
 }

@@ -5,6 +5,8 @@ function CardContainer({
   companyDetails,
   setCompanyDetails,
   setSelectedTicker,
+  searchedTickers,
+  setSearchedTickers
 }) {
   const [count, setCount] = useState(null);
 
@@ -28,6 +30,8 @@ function CardContainer({
             company={element}
             setSelectedTicker={setSelectedTicker}
             count={count}
+            searchedTickers={searchedTickers}
+            setSearchedTickers={setSearchedTickers}
           />
         ))}
       </div>

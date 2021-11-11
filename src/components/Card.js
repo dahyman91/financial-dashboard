@@ -12,6 +12,8 @@ function Card({
   setSelectedTicker,
   count,
   setCount,
+  searchedTickers,
+  setSearchedTickers
 }) {
   const [price, setPrice] = useState(0);
 
@@ -24,12 +26,16 @@ function Card({
   function handleDelete() {
     fetch(`http://localhost:3000/symbols/${id}`, {
       method: "DELETE",
-    }).then(
+    }).then(()=>
+     {
+      setSearchedTickers((searchedTickers)=> searchedTickers.filter(ticker => {
+        return ticker !== id
+      }))
       setCompanyDetails((companyDetails) => {
         return companyDetails.filter((company) => {
           return company.ticker !== id;
         });
-      })
+      })}
     );
   }
 

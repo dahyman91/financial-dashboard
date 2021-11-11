@@ -19,9 +19,8 @@ function Favorites() {
     fetch("http://localhost:3000/symbols")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         // setSearchedTickers(data);
-        setSelectedTicker(data[0].symbol);
+        if(data[0]){setSelectedTicker(data[0].symbol);}
         data.map((datum) => {
           setSearchedTickers((searchedTickers) => [
             ...searchedTickers,
@@ -62,6 +61,7 @@ function Favorites() {
             companyDetails={companyDetails}
             setCompanyDetails={setCompanyDetails}
             setSelectedTicker={setSelectedTicker}
+            setSearchedTickers={setSearchedTickers}
           />
         </>
       </Route>
