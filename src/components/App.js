@@ -7,6 +7,7 @@ import ComponentPlayground from "./ComponentPlayground";
 import API_KEY from "../API";
 import Ticker from "./Ticker";
 import "./style.css";
+import GeneralNews from "./GeneralNews";
 
 function Favorites() {
   const [searchedTickers, setSearchedTickers] = useState([]);
@@ -25,7 +26,7 @@ function Favorites() {
           setSearchedTickers((searchedTickers) => [
             ...searchedTickers,
             datum.symbol,
-          ]);
+          ]); 
           fetch(
             `https://finnhub.io/api/v1/stock/profile2?symbol=${datum.symbol}&token=${API_KEY}`
           )
@@ -54,6 +55,7 @@ function Favorites() {
             searchedTickers={searchedTickers}
             companyDetails={companyDetails}
             setCompanyDetails={setCompanyDetails}
+            setSelectedTicker={setSelectedTicker}
           />
 
           <CardContainer
@@ -63,6 +65,7 @@ function Favorites() {
             setSelectedTicker={setSelectedTicker}
             setSearchedTickers={setSearchedTickers}
           />
+          <GeneralNews/>
         </>
       </Route>
       <Route path="/dashboard/:selectedTicker">

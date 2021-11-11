@@ -7,6 +7,7 @@ function Search({
   companyDetails,
   setCompanyDetails,
   loading,
+  setSelectedTicker
 }) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -32,7 +33,9 @@ function Search({
           fetch(
                 `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[0].symbol}&token=${API_KEY}`
               ).then( res => res.json()).then(data => {
-                
+                if(!searchedTickers[0]){
+                  setSelectedTicker(data.ticker)
+                }
                 if (!data.ticker.includes('.')){setCompanyDetails((companyDetails) => [
                 ...companyDetails,
                 data])
