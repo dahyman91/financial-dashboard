@@ -68,24 +68,30 @@ function ComponentPlayground({
 
       <Grid stackable columns={4}>
         <Grid.Column width={3}>
-          <div style={{ height: "30vh", border: "1px solid black" }}>
+          <div
+            style={{
+              height: "30vh",
+              border: "1px solid black",
+              marginTop: "10%",
+            }}
+          >
             Primary Info
           </div>
         </Grid.Column>
         <Grid.Column width={4}>
-          <div style={{ height: "30vh" }}>
+          <div style={{ height: "30vh", marginTop: "10%" }}>
             <Snapshot companyMetrics={companyMetrics} />
           </div>
         </Grid.Column>
         <Grid.Column width={4}>
-          <div style={{ height: "30vh" }}>
+          <div style={{ height: "30vh", marginTop: "10%" }}>
             <KeyMetrics companyMetrics={companyMetrics} />
           </div>
         </Grid.Column>
         <Grid.Column width={4}>
           <div
             style={{
-              height: "35vh",
+              height: "45vh",
               // marginLeft: "20%",
               // border: "1px solid black",
               // textAlign: "center",
@@ -98,7 +104,7 @@ function ComponentPlayground({
 
         <Grid.Row>
           <Grid.Column width={8}>
-            <div style={{ height: "50vh" }}>
+            <div style={{ height: "65vh" }}>
               <Widget selectedTicker={selectedTicker} />
             </div>
           </Grid.Column>
