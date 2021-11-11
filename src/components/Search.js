@@ -28,34 +28,35 @@ function Search({
         if (searchedTickers.includes(data.result[0].symbol)) {
           alert("Read your buttons, it in der cuh");
         } else {
-          console.log("st", searchedTickers);
           setSearchedTickers([...searchedTickers, data.result[0].symbol]);
-          console.log(searchedTickers);
-          alert(`Added ${data.result[0].description} to your favorite stocks`);
-          fetch("http://localhost:3000/symbols", {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              symbol: data.result[0].symbol,
-              id: data.result[0].symbol,
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              fetch(
-                `https://finnhub.io/api/v1/stock/profile2?symbol=${data.symbol}&token=${API_KEY}`
-              )
-                .then((res) => res.json())
-                .then((data) =>
-                  setCompanyDetails((companyDetails) => [
-                    ...companyDetails,
-                    data,
-                  ])
-                );
-            });
+          fetch(
+                `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[0].symbol}&token=${API_KEY}`
+              ).then( res => res.json()).then(data => {
+                
+                if (!data.ticker.includes('.')){setCompanyDetails((companyDetails) => [
+                ...companyDetails,
+                data])
+                alert(`Added ${data.name} to your favorite stocks`);
+                fetch('http://localhost:3000/symbols', {
+                  method: 'POST',
+                  headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                      },
+                  body: JSON.stringify({
+                        symbol: data.ticker,
+                        id: data.ticker,
+                      })
+                })}
+                else{
+                  alert('no go its got the .')
+                }
+
+
+              }
+                )
+              
+              
         }
       })
       .catch((error) => alert(error));
