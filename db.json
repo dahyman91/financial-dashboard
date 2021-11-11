@@ -3,6 +3,14 @@
     {
       "symbol": "AAPL",
       "id": "AAPL"
+    },
+    {
+      "symbol": "MSFT",
+      "id": "MSFT"
+    },
+    {
+      "symbol": "BEN",
+      "id": "BEN"
     }
   ]
 }

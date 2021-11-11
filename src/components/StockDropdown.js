@@ -2,7 +2,11 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Dropdown } from "semantic-ui-react";
 
-const StockDropdown = ({ searchedTickers, setSelectedTicker }) => {
+const StockDropdown = ({
+  searchedTickers,
+  setSelectedTicker,
+  selectedTicker,
+}) => {
   const history = useHistory();
 
   // Set stock options
@@ -26,7 +30,7 @@ const StockDropdown = ({ searchedTickers, setSelectedTicker }) => {
       <div className="ui container">
         <Dropdown
           onChange={handleChange}
-          placeholder="Select Country"
+          value={selectedTicker}
           fluid
           search
           selection
