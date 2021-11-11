@@ -10,6 +10,7 @@ import StockDropdown from "./StockDropdown";
 import { useParams, useRouteMatch } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
 import API_KEY from "../API";
+import PrimaryInfo from "./PrimaryInfo";
 
 function ComponentPlayground({
   selectedTicker,
@@ -18,7 +19,6 @@ function ComponentPlayground({
 }) {
   const [companyMetrics, setCompanyMetrics] = useState([]);
   const date = new Date().toDateString();
-  console.log(date);
 
   useEffect(
     () =>
@@ -31,7 +31,6 @@ function ComponentPlayground({
         }),
     [selectedTicker]
   );
-  console.log(companyMetrics);
 
   const match = useRouteMatch();
   const params = useParams();
@@ -75,7 +74,7 @@ function ComponentPlayground({
               marginTop: "10%",
             }}
           >
-            Primary Info
+            <PrimaryInfo selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
         <Grid.Column width={4}>
