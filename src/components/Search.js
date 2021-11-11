@@ -11,7 +11,7 @@ function Search({
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleInputChange(e) {
-    setSearchTerm(e.target.value);
+    if(! e.target.value.includes(' ')){setSearchTerm(e.target.value);}
   }
 
   function handleSubmit(e) {
