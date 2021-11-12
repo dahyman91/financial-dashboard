@@ -23,7 +23,7 @@ function Card({
     setTimeout(() => setBackground(false), 2000);
   }
   let isGreen
-  if (price> prevPrice){
+  if (prevPrice !== 0  && price> prevPrice){
     isGreen = 'up'
   }
   else if (price < prevPrice){
