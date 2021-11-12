@@ -4,7 +4,9 @@ import CardContainer from "./CardContainer";
 import GeneralNews from "./GeneralNews";
 import Nav from "./Nav";
 import Ticker from "./Ticker";
-import { Grid, Image, Segment } from "semantic-ui-react";
+import Cryptos from "./Cryptos";
+import Metals from "./Metals";
+import { Grid, Segment } from "semantic-ui-react";
 
 function Favorites({
   setSearchedTickers,
@@ -57,8 +59,12 @@ function Favorites({
             <Segment>1</Segment>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Segment>1</Segment>
-            <Segment>1</Segment>
+            <Segment>
+              <Metals />
+            </Segment>
+            <Segment>
+              <Cryptos />
+            </Segment>
           </Grid.Column>
         </Grid>
       </div>

@@ -88,10 +88,7 @@ function ComponentPlayground({
         <Grid.Column width={4}>
           <div
             style={{
-              height: "45vh",
-              // marginLeft: "20%",
-              // border: "1px solid black",
-              // textAlign: "center",
+              height: "55vh",
             }}
             src="https://react.semantic-ui.com/images/wireframe/image.png"
           >
