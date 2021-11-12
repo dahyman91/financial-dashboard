@@ -8,8 +8,6 @@ function TAWidget({ selectedTicker }) {
       symbol={selectedTicker}
       interval={"1D"}
       colorTheme="light"
-      // autosize="true"
-      // height="1000%"
     ></TechnicalAnalysis>
   );
 }

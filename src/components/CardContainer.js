@@ -6,12 +6,12 @@ function CardContainer({
   setCompanyDetails,
   setSelectedTicker,
   searchedTickers,
-  setSearchedTickers
+  setSearchedTickers,
 }) {
   const [count, setCount] = useState(null);
 
   useEffect(
-    () => setInterval(() => setCount((count) => (count += 1)), 10000),
+    () => setInterval(() => setCount((count) => (count += 1)), 30000),
     []
   );
 
