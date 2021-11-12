@@ -17,16 +17,28 @@ function Card({
 }) {
   const [price, setPrice] = useState(0);
   const [background, setBackground] = useState(false);
-
+  const [prevPrice, setPrevPrice] = useState(0)
   function backgroundAnimation() {
     setBackground(true);
-    setTimeout(() => setBackground(false), 100);
+    setTimeout(() => setBackground(false), 2000);
   }
-
+  let isGreen
+  if (prevPrice !== 0  && price> prevPrice){
+    isGreen = 'up'
+  }
+  else if (price < prevPrice){
+    isGreen = 'down'
+  }
+  else{
+    isGreen = 'none'
+  }
   useEffect(() => {
     fetch(`https://finnhub.io/api/v1/quote?symbol=${id}&token=${API_KEY}`)
       .then((res) => res.json())
-      .then((data) => setPrice(data.c));
+      .then((data) => setPrice(price => {
+        setPrevPrice(price)
+        return data.c
+      }));
     backgroundAnimation();
   }, [count]);
 
@@ -51,7 +63,21 @@ function Card({
     setSelectedTicker(id);
   }
 
-  const className = background ? "animate price" : "price";
+  let className
+   if (background){
+    if (isGreen === 'up'){
+      className = 'green-animate price'
+    }
+    else if (isGreen === 'down'){
+      className = 'red-animate price'
+    }
+    else{
+      className = 'price'
+    }
+   } 
+ else{
+   className = 'price'
+ }
 
   return (
     <>

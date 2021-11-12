@@ -28,7 +28,7 @@
 
 .price {
   text-align: center;
-  color: #7dc4bc;
+  color: black;
 }
 
 .ticker {
@@ -48,9 +48,13 @@
   margin-top: 20%;
 }
 
-.animate {
-  background-color: red;
-  transition: background-color 10ms ease-out;
+.red-animate {
+  color: red;
+  transition: color 1s ease-out;
+}
+.green-animate {
+  color: green ;
+  transition: color 1s ease-out;
 }
 
 .ui.menu {
