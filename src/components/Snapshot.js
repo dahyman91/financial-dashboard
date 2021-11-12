@@ -1,13 +1,12 @@
 import React from "react";
 
 function Snapshot({ companyMetrics }) {
-  console.log(companyMetrics);
-
   //Snapshot
   //52 Week high
   const fiftyTwoWeekHigh = companyMetrics ? companyMetrics["52WeekHigh"] : null;
   //52 Week Low
   const fiftyTwoWeekLow = companyMetrics ? companyMetrics["52WeekLow"] : null;
+
   //marketCapitalization (need to format)
   const marketCapitalization = companyMetrics
     ? `$${companyMetrics.marketCapitalization}`

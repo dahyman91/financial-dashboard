@@ -13,35 +13,45 @@ function Card({
   count,
   setCount,
   searchedTickers,
-  setSearchedTickers
+  setSearchedTickers,
 }) {
   const [price, setPrice] = useState(0);
+  const [background, setBackground] = useState(false);
+
+  function backgroundAnimation() {
+    setBackground(true);
+    setTimeout(() => setBackground(false), 100);
+  }
 
   useEffect(() => {
     fetch(`https://finnhub.io/api/v1/quote?symbol=${id}&token=${API_KEY}`)
       .then((res) => res.json())
       .then((data) => setPrice(data.c));
+    backgroundAnimation();
   }, [count]);
 
   function handleDelete() {
     fetch(`http://localhost:3000/symbols/${id}`, {
       method: "DELETE",
-    }).then(()=>
-     {
-      setSearchedTickers((searchedTickers)=> searchedTickers.filter(ticker => {
-        return ticker !== id
-      }))
+    }).then(() => {
+      setSearchedTickers((searchedTickers) =>
+        searchedTickers.filter((ticker) => {
+          return ticker !== id;
+        })
+      );
       setCompanyDetails((companyDetails) => {
         return companyDetails.filter((company) => {
           return company.ticker !== id;
         });
-      })}
-    );
+      });
+    });
   }
 
   function handleClick() {
     setSelectedTicker(id);
   }
+
+  const className = background ? "animate price" : "price";
 
   return (
     <>
@@ -50,13 +60,12 @@ function Card({
           className="ui fluid card"
           style={{
             filter: "drop-shadow(2px 2px 2px rgba(0,0,0,0.5))",
-            // borderRadius: "10%",
           }}
         >
           <div className="ui slide masked reveal image">
             <div className="visible content first-card">
               <div className="first-card-info">
-                <h2 className="price">{`${price} USD`}</h2>
+                <h2 className={className}>{`${price} USD`}</h2>
                 <h3 className="ticker">{id}</h3>
               </div>
             </div>

@@ -1,8 +1,24 @@
 {
   "symbols": [
     {
+      "symbol": "LOW",
+      "id": "LOW"
+    },
+    {
+      "symbol": "AINC",
+      "id": "AINC"
+    },
+    {
       "symbol": "AAPL",
       "id": "AAPL"
+    },
+    {
+      "symbol": "TSLA",
+      "id": "TSLA"
+    },
+    {
+      "symbol": "UBER",
+      "id": "UBER"
     },
     {
       "symbol": "BEN",

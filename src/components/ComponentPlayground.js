@@ -50,7 +50,7 @@ function ComponentPlayground({
         </Grid.Column>
       </Grid>
 
-      <Grid>
+      <Grid style={{ margin: "0 2%" }}>
         <Grid.Column floated="left" width={5}>
           <div style={{ height: "5vh" }}>
             <StockDropdown
@@ -64,13 +64,11 @@ function ComponentPlayground({
           <div style={{ height: "5vh" }}>{date}</div>
         </Grid.Column>
       </Grid>
-
-      <Grid stackable columns={4}>
+      <Grid stackable columns={4} style={{ margin: "0 1%" }}>
         <Grid.Column width={3}>
           <div
             style={{
               height: "30vh",
-              border: "1px solid black",
               marginTop: "10%",
             }}
           >
@@ -140,6 +138,7 @@ function ComponentPlayground({
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
       {/* <StockDropdown
         searchedTickers={searchedTickers}
         setSelectedTicker={setSelectedTicker}

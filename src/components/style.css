@@ -47,3 +47,12 @@
   margin-left: 25%;
   margin-top: 20%;
 }
+
+.animate {
+  background-color: red;
+  transition: background-color 10ms ease-out;
+}
+
+.ui.menu {
+  margin: 0;
+}
