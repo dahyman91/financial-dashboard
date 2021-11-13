@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import Ticker from "./Ticker";
 import Cryptos from "./Cryptos";
 import Metals from "./Metals";
+import MarketOverviewWidget from "./MarketOverviewWidget";
 import { Grid, Segment } from "semantic-ui-react";
 
 function Favorites({
@@ -51,20 +52,19 @@ function Favorites({
           />
         </Grid>
         <Grid relaxed columns={3}>
-          <Grid.Column width={8}>
+          <Grid.Column width={5}>
             <GeneralNews />
           </Grid.Column>
           <Grid.Column width={4}>
-            <Segment>1</Segment>
-            <Segment>1</Segment>
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Segment>
+            <Segment style={{ backgroundColor: "ECB33E" }}>
               <Metals />
             </Segment>
             <Segment>
               <Cryptos />
             </Segment>
+          </Grid.Column>
+          <Grid.Column width={7}>
+            <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
       </div>

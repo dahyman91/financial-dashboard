@@ -64,28 +64,33 @@ function ComponentPlayground({
           <div style={{ height: "5vh" }}>{date}</div>
         </Grid.Column>
       </Grid>
-      <Grid stackable columns={4} style={{ margin: "0 1%" }}>
+      <Grid stackable columns={5} style={{ margin: "0 1%" }}>
         <Grid.Column width={3}>
           <div
             style={{
               height: "30vh",
-              marginTop: "10%",
             }}
           >
             <PrimaryInfo selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
-        <Grid.Column width={4}>
-          <div style={{ height: "30vh", marginTop: "10%" }}>
+        <Grid.Column width={6}>
+          <div
+            style={{
+              height: "100%",
+              border: "1px solid rgba(0,0,0,0.15)",
+              borderRadius: "1%",
+            }}
+          >
             <Snapshot companyMetrics={companyMetrics} />
           </div>
         </Grid.Column>
-        <Grid.Column width={4}>
-          <div style={{ height: "30vh", marginTop: "10%" }}>
+        {/* <Grid.Column width={4}>
+          <div style={{ height: "30vh" }}>
             <KeyMetrics companyMetrics={companyMetrics} />
           </div>
-        </Grid.Column>
-        <Grid.Column width={4}>
+        </Grid.Column> */}
+        <Grid.Column width={5}>
           <div
             style={{
               height: "55vh",
@@ -107,30 +112,6 @@ function ComponentPlayground({
               <div style={{ height: "30vh" }}>
                 <CompanyNews selectedTicker={selectedTicker} />
               </div>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid stackable relaxed columns={2}>
-                <Grid.Column>
-                  <div
-                    style={{
-                      marginTop: "3vh",
-                      height: "40vh",
-                      border: "1px solid red",
-                    }}
-                  ></div>
-                </Grid.Column>
-                <Grid.Column>
-                  <div
-                    style={{
-                      marginTop: "3vh",
-                      height: "30vh",
-                      border: "1px solid black",
-                    }}
-                  >
-                    TBD
-                  </div>
-                </Grid.Column>
-              </Grid>
             </Grid.Row>
           </Grid.Column>
         </Grid.Row>

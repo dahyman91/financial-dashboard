@@ -16,7 +16,9 @@ function Cryptos() {
       }
     )
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+      })
       .catch((err) => {
         console.error(err);
       });
