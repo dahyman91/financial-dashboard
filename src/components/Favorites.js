@@ -57,10 +57,10 @@ function Favorites({
           </Grid.Column>
           <Grid.Column width={4}>
             <Segment style={{ backgroundColor: "ECB33E" }}>
-              <Metals />
+              <Cryptos />
             </Segment>
             <Segment>
-              <Cryptos />
+              <Metals />
             </Segment>
           </Grid.Column>
           <Grid.Column width={7}>
