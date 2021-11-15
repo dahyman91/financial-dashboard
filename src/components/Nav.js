@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 function Nav({ curPage, setCurPage, selectedTicker, searchedTickers }) {
   return (
     <div class="ui tabular menu">
-      <Link
-        to="/favorites"
-        class={curPage === "dashboard" ? "item active" : "item"}
-      >
+      <Link to="/" class={curPage === "dashboard" ? "item active" : "item"}>
         Favorite Stocks
       </Link>
       <Link

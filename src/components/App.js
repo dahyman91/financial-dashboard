@@ -13,7 +13,7 @@ function App() {
   const [curPage, setCurPage] = useState("dashboard");
 
   useEffect(() => {
-    fetch("http://localhost:3000/symbols")
+    fetch("https://shrouded-cliffs-39592.herokuapp.com/symbols")
       .then((res) => res.json())
       .then((data) => {
         // setSearchedTickers(data);
@@ -37,7 +37,7 @@ function App() {
   }, []);
   return (
     <Switch>
-      <Route path="/favorites">
+      <Route exact path="/">
         <>
           <Favorites
             setSearchedTickers={setSearchedTickers}
