@@ -1,7 +1,11 @@
-import TradingViewWidget from "react-tradingview-widget";
+import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 
 const Widget = ({ selectedTicker }) => (
-  <TradingViewWidget locale="fr" autosize symbol={`${selectedTicker}`} />
+  <AdvancedRealTimeChart
+    symbol={`${selectedTicker}`}
+    autosize
+    locale="fr"
+  ></AdvancedRealTimeChart>
 );
 
 export default Widget;
