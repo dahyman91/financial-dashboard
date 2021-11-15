@@ -7,12 +7,14 @@ function Search({
   companyDetails,
   setCompanyDetails,
   loading,
-  setSelectedTicker
+  setSelectedTicker,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleInputChange(e) {
-    if(! e.target.value.includes(' ')){setSearchTerm(e.target.value);}
+    if (!e.target.value.includes(" ")) {
+      setSearchTerm(e.target.value);
+    }
   }
 
   function handleSubmit(e) {
@@ -31,35 +33,34 @@ function Search({
         } else {
           setSearchedTickers([...searchedTickers, data.result[0].symbol]);
           fetch(
-                `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[0].symbol}&token=${API_KEY}`
-              ).then( res => res.json()).then(data => {
-                if(!searchedTickers[0]){
-                  setSelectedTicker(data.ticker)
-                }
-                if (!data.ticker.includes('.')){setCompanyDetails((companyDetails) => [
-                ...companyDetails,
-                data])
-                alert(`Added ${data.name} to your favorite stocks`);
-                fetch('http://localhost:3000/symbols', {
-                  method: 'POST',
-                  headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                      },
-                  body: JSON.stringify({
-                        symbol: data.ticker,
-                        id: data.ticker,
-                      })
-                })}
-                else{
-                  alert('no go its got the .')
-                }
-
-
+            `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[0].symbol}&token=${API_KEY}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if (!searchedTickers[0]) {
+                setSelectedTicker(data.ticker);
               }
-                )
-              
-              
+              if (!data.ticker.includes(".")) {
+                setCompanyDetails((companyDetails) => [
+                  ...companyDetails,
+                  data,
+                ]);
+                alert(`Added ${data.name} to your favorite stocks`);
+                fetch("https://shrouded-cliffs-39592.herokuapp.com/symbols", {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    symbol: data.ticker,
+                    id: data.ticker,
+                  }),
+                });
+              } else {
+                alert("no go its got the .");
+              }
+            });
         }
       })
       .catch((error) => alert(error));
