@@ -40,7 +40,7 @@ function Search({
               if (!searchedTickers[0]) {
                 setSelectedTicker(data.ticker);
               }
-              if (!data.ticker.includes(".")) {
+              if (data.ticker && !data.ticker.includes(".")) {
                 setCompanyDetails((companyDetails) => [
                   ...companyDetails,
                   data,
