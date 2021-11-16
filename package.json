@@ -19,7 +19,7 @@
   "scripts": {
     "server": "json-server --watch db.json",
     "start": "react-scripts start",
-    "build": "npm run build",
+    "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
