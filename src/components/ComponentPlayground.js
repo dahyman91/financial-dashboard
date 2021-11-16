@@ -101,10 +101,10 @@ function ComponentPlayground({
         <Grid.Row>
           <Grid.Column width={8}>
             <div>
-              {/* <Widget
+              <Widget
                 // style={{ height: "40vh" }}
                 selectedTicker={selectedTicker}
-              /> */}
+              />
             </div>
           </Grid.Column>
           <Grid.Column width={8}>
