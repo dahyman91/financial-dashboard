@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "./Search";
 import CardContainer from "./CardContainer";
 import GeneralNews from "./GeneralNews";
@@ -19,6 +19,7 @@ function Favorites({
   setCurPage,
   selectedTicker,
 }) {
+  const [ticker, setTicker] = useState(false);
   return (
     <>
       <Nav
@@ -27,7 +28,10 @@ function Favorites({
         selectedTicker={selectedTicker}
         searchedTickers={searchedTickers}
       />
-      <Ticker style={{ marginTop: "0" }} />
+      <div style={{ height: "46px" }}>
+        <Ticker style={{ marginTop: "0" }} />
+      </div>
+
       <div style={{ margin: "0 2vw" }}>
         <Grid columns={1}>
           <Grid.Column>

@@ -29,6 +29,8 @@ function Search({
       .then((data) => {
         if (searchedTickers.includes(data.result[0].symbol)) {
           setLoading(false);
+          setHeader("No Stock Added");
+
           setErr("Read your buttons, it in der cuh");
         } else {
           setSearchedTickers([...searchedTickers, data.result[0].symbol]);
@@ -49,10 +51,7 @@ function Search({
                 setLoading(false);
                 setHeader("Stock Added");
                 setErr(`Added ${data.name} to your favorite stocks`);
-                setTimeout(() => {
-                  setErr("");
-                  setHeader("No Stock Added");
-                }, 3000);
+
                 fetch("https://shrouded-cliffs-39592.herokuapp.com/symbols", {
                   method: "POST",
                   headers: {
@@ -66,6 +65,8 @@ function Search({
                 });
               } else {
                 setLoading(false);
+                setHeader("No Stock Added");
+
                 setErr("no go its got the .");
               }
             });

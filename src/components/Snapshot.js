@@ -48,7 +48,7 @@ function Snapshot({ companyMetrics }) {
             <td>${fiftyTwoWeekLow}</td>
           </tr>
           <tr>
-            <td>Total Market Capitalization</td>
+            <td>Total Market Capitalization (M)</td>
             <td>{marketCapitalization}</td>
           </tr>
           <tr>
