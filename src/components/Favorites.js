@@ -47,6 +47,7 @@ function Favorites({
             setCompanyDetails={setCompanyDetails}
             setSelectedTicker={setSelectedTicker}
             setSearchedTickers={setSearchedTickers}
+            curPage={curPage}
           />
         </Grid>
         <Grid stackable columns={3} style={{ margin: "0 1%" }}>

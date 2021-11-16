@@ -12,9 +12,9 @@ function Card({
   ipo,
   setSelectedTicker,
   count,
-  setCount,
-  searchedTickers,
   setSearchedTickers,
+  exchange,
+  industry,
 }) {
   const [price, setPrice] = useState(0);
   const [background, setBackground] = useState(false);
@@ -31,17 +31,20 @@ function Card({
   } else {
     isGreen = "none";
   }
-  useEffect(() => {
-    fetch(`https://finnhub.io/api/v1/quote?symbol=${id}&token=${API_KEY}`)
-      .then((res) => res.json())
-      .then((data) =>
-        setPrice((price) => {
-          setPrevPrice(price);
-          return data.c;
-        })
-      );
-    backgroundAnimation();
-  }, [count]);
+  useEffect(
+    (timeout) => {
+      fetch(`https://finnhub.io/api/v1/quote?symbol=${id}&token=${API_KEY}`)
+        .then((res) => res.json())
+        .then((data) =>
+          setPrice((price) => {
+            setPrevPrice(price);
+            return data.c;
+          })
+        );
+      backgroundAnimation();
+    },
+    [count]
+  );
 
   function handleDelete() {
     fetch(`https://shrouded-cliffs-39592.herokuapp.com/symbols/${id}`, {
@@ -63,6 +66,7 @@ function Card({
   function handleClick() {
     setSelectedTicker(id);
   }
+  console.log(companyDetails);
 
   let className;
   if (background) {
@@ -83,18 +87,37 @@ function Card({
         <div
           className="ui fluid card"
           style={{
-            filter: "drop-shadow(2px 2px 2px rgba(0,0,0,0.5))",
+            filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
+            border: "1px solid #EDD193",
           }}
         >
           <div className="ui slide masked reveal image">
             <div className="visible content first-card">
               <div className="first-card-info">
+                <img
+                  src={logo}
+                  alt="No Logo in DB"
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    // margin: "auto 0px",
+                    // textAlign: "center",
+                    maxWidth: "50px",
+                    borderRadius: "10%",
+                  }}
+                />
                 <h2 className={className}>{`${price} USD`}</h2>
                 <h3 className="ticker">{id}</h3>
+                <p>{exchange}</p>
+                <p>{industry}</p>
               </div>
             </div>
             <div className="hidden content image-container">
-              <SmallChart symbol={id}></SmallChart>
+              <SmallChart
+                symbol={id}
+                style={{ position: "fixed", bottom: "0" }}
+              ></SmallChart>
             </div>
 
             <div

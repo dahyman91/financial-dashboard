@@ -8,7 +8,6 @@ import "./style.css";
 function App() {
   const [searchedTickers, setSearchedTickers] = useState([]);
   const [companyDetails, setCompanyDetails] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [selectedTicker, setSelectedTicker] = useState("");
   const [curPage, setCurPage] = useState("dashboard");
 
@@ -16,7 +15,6 @@ function App() {
     fetch("https://shrouded-cliffs-39592.herokuapp.com/symbols")
       .then((res) => res.json())
       .then((data) => {
-        // setSearchedTickers(data);
         if (data[0]) {
           setSelectedTicker(data[0].symbol);
         }
