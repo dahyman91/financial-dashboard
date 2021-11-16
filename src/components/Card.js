@@ -113,11 +113,15 @@ function Card({
                 <p>{industry}</p>
               </div>
             </div>
-            <div className="hidden content image-container">
+            <div
+              style={{ height: "250px" }}
+              className="hidden content image-container"
+            >
               <SmallChart
                 symbol={id}
                 style={{ position: "fixed", bottom: "0" }}
               ></SmallChart>
+              <input placeholder="IM NICE" />
             </div>
 
             <div
@@ -130,10 +134,11 @@ function Card({
                 className="header"
               >
                 {name}
+                <div className="meta">
+                  <span className="date">IPO: {ipo}</span>
+                </div>
               </Link>
-              <div className="meta">
-                <span className="date">IPO: {ipo}</span>
-              </div>
+
               <div className="extra content">
                 <button onClick={handleDelete}>Delete</button>
               </div>
