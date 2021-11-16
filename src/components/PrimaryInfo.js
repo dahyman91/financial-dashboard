@@ -38,7 +38,7 @@ function PrimaryInfo({ selectedTicker }) {
         border: "1px solid red",
         borderRadius: "2%",
         padding: "5%",
-        // marginTop: "40%",
+        width: "20vw",
       }}
     >
       <h2>
