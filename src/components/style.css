@@ -1,3 +1,7 @@
+body {
+  background-color: #faf9f6;
+}
+
 .search-container {
   display: flex;
 }
@@ -23,16 +27,17 @@
 .first-card-info {
   width: 80%;
   margin: auto;
-  margin-top: 30%;
+  margin-top: 40%;
+  text-align: center;
 }
 
 .price {
   text-align: center;
   color: black;
+  font-size: 1.3rem;
 }
 
 .ticker {
-  color: #7dc4bc;
   text-align: center;
 }
 
@@ -53,10 +58,22 @@
   transition: color 1s ease-out;
 }
 .green-animate {
-  color: green ;
+  color: green;
   transition: color 1s ease-out;
 }
 
 .ui.menu {
   margin: 0;
+}
+
+.first-card > p {
+  margin: 0;
+}
+
+.first-card h2 {
+  margin: 0;
+}
+
+.first-card h3 {
+  margin: 13px 0;
 }

@@ -7,13 +7,13 @@ function CardContainer({
   setSelectedTicker,
   searchedTickers,
   setSearchedTickers,
+  curPage,
 }) {
   const [count, setCount] = useState(null);
 
-  useEffect(
-    () => setInterval(() => setCount((count) => (count += 1)), 30000),
-    []
-  );
+  useEffect(() => {
+    setInterval(() => setCount((count) => (count += 1)), 30000);
+  }, []);
 
   return (
     <div style={{ width: "90vw", margin: "2% auto" }}>
@@ -24,6 +24,8 @@ function CardContainer({
             name={element.name}
             logo={element.logo}
             companyDetails={companyDetails}
+            exchange={element.exchange}
+            industry={element.finnhubIndustry}
             setCompanyDetails={setCompanyDetails}
             id={element.ticker}
             ipo={element.ipo}
@@ -32,6 +34,7 @@ function CardContainer({
             count={count}
             searchedTickers={searchedTickers}
             setSearchedTickers={setSearchedTickers}
+            curPage={curPage}
           />
         ))}
       </div>

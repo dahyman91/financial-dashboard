@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import API_KEY from "../API";
+import { Input, Form, Button, Message } from "semantic-ui-react";
 
 function Search({
   setSearchedTickers,
   searchedTickers,
   companyDetails,
   setCompanyDetails,
-  loading,
   setSelectedTicker,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [err, setErr] = useState("");
+  const [header, setHeader] = useState("No Stock Added");
+  const [loading, setLoading] = useState(false);
 
   function handleInputChange(e) {
     if (!e.target.value.includes(" ")) {
@@ -18,18 +21,15 @@ function Search({
   }
 
   function handleSubmit(e) {
+    setLoading(true);
     e.preventDefault();
 
     fetch(`https://finnhub.io/api/v1/search?q=${searchTerm}&token=${API_KEY}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log("data", data);
-        // // console.log("searchedTickers", searchedTickers);
-
-        // data.map((datum) => console.log(datum));
-
         if (searchedTickers.includes(data.result[0].symbol)) {
-          alert("Read your buttons, it in der cuh");
+          setLoading(false);
+          setErr("Read your buttons, it in der cuh");
         } else {
           setSearchedTickers([...searchedTickers, data.result[0].symbol]);
           fetch(
@@ -45,7 +45,14 @@ function Search({
                   ...companyDetails,
                   data,
                 ]);
-                alert(`Added ${data.name} to your favorite stocks`);
+                // alert(`Added ${data.name} to your favorite stocks`);
+                setLoading(false);
+                setHeader("Stock Added");
+                setErr(`Added ${data.name} to your favorite stocks`);
+                setTimeout(() => {
+                  setErr("");
+                  setHeader("No Stock Added");
+                }, 3000);
                 fetch("https://shrouded-cliffs-39592.herokuapp.com/symbols", {
                   method: "POST",
                   headers: {
@@ -58,21 +65,52 @@ function Search({
                   }),
                 });
               } else {
-                alert("no go its got the .");
+                setLoading(false);
+                setErr("no go its got the .");
               }
             });
         }
-      })
-      .catch((error) => alert(error));
+      });
+    setSearchTerm("");
   }
 
   return (
     <div className="search-container">
-      <form className="search-form" onSubmit={handleSubmit}>
-        <h3 className="search-text">Add Your Favorite Stocks</h3>
-        <input type="text" value={searchTerm} onChange={handleInputChange} />
-        <input className="searchBtn" type="submit" />
-      </form>
+      <Form
+        style={{
+          paddingTop: "20px",
+        }}
+        className="search-form"
+        onSubmit={handleSubmit}
+      >
+        <h3 className="search-text"></h3>
+        <Input
+          loading={loading}
+          size="big"
+          onChange={handleInputChange}
+          value={searchTerm}
+          placeholder="Add Stocks"
+          action={{ icon: "search" }}
+          style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
+        />
+        <Message error={!err} header={header} content={err} />
+        {/* <Form.Field
+        // id="form-input-control-error-email"
+        // control={Input}
+        // label="Email"
+        // placeholder="joe@schmoe.com"
+        // error={{
+        //   content: "Please enter a valid email address",
+        //   pointing: "below",
+        // }}
+        /> */}
+        {/* <Input action={{ icon: "search" }} placeholder="Search..." /> */}
+        {/* <Form.Field
+          id="form-button-control-public"
+          control={Button}
+          content="Confirm"
+        /> */}
+      </Form>
     </div>
   );
 }
