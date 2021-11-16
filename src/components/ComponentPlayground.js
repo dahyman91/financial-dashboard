@@ -34,7 +34,7 @@ function ComponentPlayground({
 
   const params = useParams();
 
-  useEffect(() => setSelectedTicker(params.selectedTicker), []);
+  useEffect(() => setSelectedTicker(params.selectedTicker), [selectedTicker]);
 
   return (
     <>
@@ -102,7 +102,7 @@ function ComponentPlayground({
           <Grid.Column width={8}>
             <div>
               <Widget
-                style={{ height: "40vh" }}
+                // style={{ height: "40vh" }}
                 selectedTicker={selectedTicker}
               />
             </div>

@@ -8,7 +8,7 @@ function Nav({ curPage, setCurPage, selectedTicker, searchedTickers }) {
         Favorite Stocks
       </Link>
       <Link
-        to={selectedTicker ? `/dashboard/${selectedTicker}` : "/favorites"}
+        to={selectedTicker ? `/dashboard/${selectedTicker}` : "#"}
         class={curPage !== "dashboard" ? "item active" : "item"}
       >
         Dashboard

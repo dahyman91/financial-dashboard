@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API_KEY from "../API";
 import { Link } from "react-router-dom";
+import SmallChart from "./SmallChart";
 
 function Card({
   logo,
@@ -93,7 +94,7 @@ function Card({
               </div>
             </div>
             <div className="hidden content image-container">
-              <img className="logo" alt="logo" src={logo} />
+              <SmallChart symbol={id}></SmallChart>
             </div>
 
             <div
