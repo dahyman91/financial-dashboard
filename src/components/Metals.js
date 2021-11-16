@@ -21,14 +21,13 @@ function Metals() {
   }, []);
 
   return (
-    <table>
-      <tr>
-        <th>Price of Gold per Ounce</th>
-      </tr>
-      <tr>
-        <td>{goldPrice ? `$${goldPrice}` : null}</td>
-      </tr>
-    </table>
+    <>
+      <h3 style={{ textAlign: "center" }}>Price of Gold per Ounce</h3>
+
+      <h4 style={{ marginTop: "0", textAlign: "center" }}>
+        {goldPrice ? `$${goldPrice}` : null}
+      </h4>
+    </>
   );
 }
 

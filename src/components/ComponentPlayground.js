@@ -32,17 +32,14 @@ function ComponentPlayground({
     [selectedTicker]
   );
 
-  const match = useRouteMatch();
   const params = useParams();
-
-  // console.log(params.selectedTicker);
 
   useEffect(() => setSelectedTicker(params.selectedTicker), []);
 
   return (
     <>
       <Nav />
-      <Grid>
+      <Grid centered>
         <Grid.Column width={16}>
           <div style={{ height: "5vh" }}>
             <Ticker />
@@ -50,7 +47,7 @@ function ComponentPlayground({
         </Grid.Column>
       </Grid>
 
-      <Grid style={{ margin: "0 2%" }}>
+      <Grid centered>
         <Grid.Column floated="left" width={5}>
           <div style={{ height: "5vh" }}>
             <StockDropdown
@@ -64,38 +61,38 @@ function ComponentPlayground({
           <div style={{ height: "5vh" }}>{date}</div>
         </Grid.Column>
       </Grid>
-      <Grid stackable columns={5} style={{ margin: "0 1%" }}>
+      <Grid centered stackable columns={5}>
         <Grid.Column width={3}>
           <div
             style={{
-              height: "30vh",
+              height: "80vh",
             }}
           >
             <PrimaryInfo selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
-        <Grid.Column width={6}>
+        <Grid.Column
+          width={4}
+          style={{
+            marginLeft: "7%",
+            marginRight: "7%",
+            border: "1px solid rgba(0,0,0,0.15)",
+          }}
+        >
           <div
             style={{
-              height: "100%",
-              border: "1px solid rgba(0,0,0,0.15)",
+              height: "40vh",
               borderRadius: "1%",
             }}
           >
             <Snapshot companyMetrics={companyMetrics} />
           </div>
         </Grid.Column>
-        {/* <Grid.Column width={4}>
-          <div style={{ height: "30vh" }}>
-            <KeyMetrics companyMetrics={companyMetrics} />
-          </div>
-        </Grid.Column> */}
         <Grid.Column width={5}>
           <div
             style={{
-              height: "55vh",
+              height: "40vh",
             }}
-            src="https://react.semantic-ui.com/images/wireframe/image.png"
           >
             <TAWidget selectedTicker={selectedTicker} />
           </div>
@@ -103,8 +100,11 @@ function ComponentPlayground({
 
         <Grid.Row>
           <Grid.Column width={8}>
-            <div style={{ height: "65vh" }}>
-              <Widget selectedTicker={selectedTicker} />
+            <div>
+              <Widget
+                style={{ height: "40vh" }}
+                selectedTicker={selectedTicker}
+              />
             </div>
           </Grid.Column>
           <Grid.Column width={8}>

@@ -27,10 +27,8 @@ function Favorites({
         selectedTicker={selectedTicker}
         searchedTickers={searchedTickers}
       />
-
       <Ticker style={{ marginTop: "0" }} />
-
-      <div style={{ margin: "0 5vw" }}>
+      <div style={{ margin: "0 2vw" }}>
         <Grid columns={1}>
           <Grid.Column>
             <Search
@@ -51,19 +49,26 @@ function Favorites({
             setSearchedTickers={setSearchedTickers}
           />
         </Grid>
-        <Grid relaxed columns={3}>
-          <Grid.Column width={5}>
+        <Grid stackable columns={3} style={{ margin: "0 1%" }}>
+          <Grid.Column width={6}>
             <GeneralNews />
           </Grid.Column>
-          <Grid.Column width={4}>
-            <Segment style={{ backgroundColor: "ECB33E" }}>
-              <Cryptos />
+          <Grid.Column
+            width={4}
+            style={{ marginLeft: "3vw", marginRight: "3vw" }}
+          >
+            <Segment
+              style={{
+                backgroundColor: "ECB33E",
+              }}
+            >
+              <Cryptos style={{ textAlign: "center" }} />
             </Segment>
-            <Segment>
+            <Segment style={{ backgroundColor: "gold" }}>
               <Metals />
             </Segment>
           </Grid.Column>
-          <Grid.Column width={7}>
+          <Grid.Column width={4}>
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
