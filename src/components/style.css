@@ -77,3 +77,9 @@ body {
 .first-card h3 {
   margin: 13px 0;
 }
+
+@media screen and (max-width: 1085px) {
+  body {
+    background-color: lightgreen;
+  }
+}

@@ -29,7 +29,7 @@ function KeyMetrics({ companyMetrics }) {
       >
         Annual Key Metrics
       </h2>
-      <table className="ui table">
+      <table className="ui table" style={{ width: "500px" }}>
         <tbody>
           <tr>
             <td>Price-to-Earnings </td>
