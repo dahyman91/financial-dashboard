@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import CardContainer from "./CardContainer";
 import GeneralNews from "./GeneralNews";
@@ -8,6 +8,8 @@ import Cryptos from "./Cryptos";
 import Metals from "./Metals";
 import MarketOverviewWidget from "./MarketOverviewWidget";
 import { Grid, Segment } from "semantic-ui-react";
+import PieChart from "./PieChart";
+import PortfolioTable from "./PortfolioTable";
 
 function Favorites({
   setSearchedTickers,
@@ -20,6 +22,17 @@ function Favorites({
   selectedTicker,
 }) {
   const [ticker, setTicker] = useState(false);
+  const [tableInfo, setTableInfo] = useState([]);
+
+  useEffect(() => {
+    fetch("https://shrouded-cliffs-39592.herokuapp.com/tableData")
+      .then((res) => res.json())
+      .then((data) => {
+        setTableInfo(data);
+      });
+  }, []);
+
+
   return (
     <>
       <Nav
@@ -77,6 +90,8 @@ function Favorites({
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
+        {/* <PieChart /> */}
+        <PortfolioTable tableInfo={tableInfo} />
       </div>
     </>
   );
