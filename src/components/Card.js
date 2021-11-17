@@ -70,9 +70,11 @@ function Card({
     setSelectedTicker(id);
   }
 
+
   function handlePortfolioOpen() {
     setOpenPortfolioModal(true);
   }
+
 
   let className;
   if (background) {

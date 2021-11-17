@@ -40,7 +40,6 @@ function PrimaryInfo({ selectedTicker }) {
   }, [selectedTicker]);
 
   const directionEmoji = percentChange >= 0 ? "⬆️" : "⬇️";
-  console.log(percentChange);
 
   return (
     <>

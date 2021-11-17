@@ -21,7 +21,6 @@ function CompanyNews({ selectedTicker }) {
     "-" +
     date.toLocaleDateString("en-US", { day: "numeric" });
 
-  // console.log(date.toLocaleDateString("en-US", options);
   useEffect(() => {
     fetch(
       `https://finnhub.io/api/v1/company-news?symbol=${selectedTicker}&from=${startDate}&to=${endDate}&token=${API_KEY}`
