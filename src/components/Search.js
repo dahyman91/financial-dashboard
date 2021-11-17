@@ -25,11 +25,13 @@ function Search({
   function handleSubmit(e) {
     setLoading(true);
     e.preventDefault();
+    setElements([])
+    setErr('')
+
 
     fetch(`https://finnhub.io/api/v1/search?q=${searchTerm}&token=${API_KEY}`)
       .then((res) => res.json())
       .then((data) => {
-        let results = false
         for (let i=0; i<5; i++){
           data.result[i] && fetch(
             `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[i].symbol}&token=${API_KEY}`
@@ -37,14 +39,17 @@ function Search({
           .then((res) => res.json())
           .then(data=>{
             if (data.ticker && !data.ticker.includes(".")){
-              setElements(elements=> [...elements, {name: data.name, symbol: data.ticker}])
-              results = true
+                setElements(elements=> [...elements, {name: data.name, symbol: data.ticker}])
+            
+              // setResults(true)
             }
             setLoading(false)
-            if(!results){
-              setHeader('No Stocks Found')
-              setErr('Please try again with a different query')
-            }
+          
+            // if(!results && !loading){
+            //   setElements([])
+            //   setHeader('No Stocks Found')
+            //   setErr('Please try again with a different query')
+            // }
           })
 
         }

@@ -45,7 +45,7 @@ export default function Option({element, setLoading, setErr, setHeader, setSelec
               } 
             });
         }
-        setElements('')
+        setElements([])
   }
     return (
         <tr >
