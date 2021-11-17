@@ -66,7 +66,7 @@ function Card({
   function handleClick() {
     setSelectedTicker(id);
   }
-  console.log(companyDetails);
+ 
 
   let className;
   if (background) {
