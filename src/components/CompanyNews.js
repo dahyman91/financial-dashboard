@@ -160,33 +160,33 @@ function CompanyNews({ selectedTicker }) {
           </td>
           <td>
             <h4>
-              {newsStories[4] ? (
-                <a href={newsStories[4].url} target="_blank">
+              {newsStories[6] ? (
+                <a href={newsStories[6].url} target="_blank">
                   {" "}
-                  {newsStories[4].headline}{" "}
+                  {newsStories[6].headline}{" "}
                 </a>
               ) : null}
             </h4>
           </td>
           <td>
-            <h6>{newsStories[5] ? newsStories[5].source : null}</h6>
+            <h6>{newsStories[7] ? newsStories[7].source : null}</h6>
           </td>
         </tr>
         <tr>
           <td>
-            {newsStories[4] ? (
+            {newsStories[7] ? (
               <img
-                src={newsStories[4].image}
+                src={newsStories[7].image}
                 style={{ "max-width": "80px", "border-radius": "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
-              {newsStories[4] ? (
-                <a href={newsStories[4].url} target="_blank">
+              {newsStories[8] ? (
+                <a href={newsStories[8].url} target="_blank">
                   {" "}
-                  {newsStories[4].headline}{" "}
+                  {newsStories[8].headline}{" "}
                 </a>
               ) : null}
             </h4>

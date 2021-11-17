@@ -7,6 +7,11 @@ function PrimaryInfo({ selectedTicker }) {
   const [image, setImage] = useState("");
   const [percentChange, setPercentChange] = useState("");
   const [exchange, setExchange] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [country, setCountry] = useState("");
+  const [ipo, setIpo] = useState("");
+  const [shareOutstanding, setSharesOutstanding] = useState("");
 
   useEffect(() => {
     fetch(
@@ -17,6 +22,11 @@ function PrimaryInfo({ selectedTicker }) {
         setName(data.name);
         setImage(data.logo);
         setExchange(data.exchange);
+        setIndustry(data.finnhubIndustry);
+        setCurrency(data.currency);
+        setCountry(data.country);
+        setIpo(data.ipo);
+        setSharesOutstanding(data.shareOutstanding);
       });
 
     fetch(
@@ -33,46 +43,27 @@ function PrimaryInfo({ selectedTicker }) {
   console.log(percentChange);
 
   return (
-    <div
-      style={{
-        border: "1px solid red",
-        borderRadius: "2%",
-        padding: "5%",
-        width: "20vw",
-      }}
-    >
-      <h2>
-        {name}{" "}
-        <img
-          alt={name}
-          style={{
-            float: "right",
-            width: "15%",
-            height: "auto",
-          }}
-          src={image}
-        />
-      </h2>
-
-      <p
-        style={{
-          textAlign: "center",
-          marginTop: "10%",
-        }}
-      >
-        {" "}
-        {price} USD ({percentChange}%)
-      </p>
-      <p
-        style={{
-          textAlign: "center",
-          marginTop: "10%",
-        }}
-      >
-        {" "}
-        {exchange}
-      </p>
-    </div>
+    <>
+      <div class="ui cards">
+        <div class="card" style={{ width: "20vw" }}>
+          <div class="content">
+            <img class="right floated mini ui image" src={image} alt={name} />
+            <div class="header">
+              {name} ({percentChange}%) {directionEmoji}
+            </div>
+            <div class="meta">{exchange}</div>
+            <div class="description">Price -- {price} USD</div>
+            <div class="description">Industry -- {industry}</div>
+            <div class="description">Currency -- {currency}</div>
+            <div class="description">
+              Shares Outstanding (M) -- {shareOutstanding}
+            </div>
+            <div class="description">Country -- {country}</div>
+            <div class="description">IPO Date -- {ipo}</div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
