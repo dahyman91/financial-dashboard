@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import API_KEY from "../API";
 import { Link } from "react-router-dom";
 import SmallChart from "./SmallChart";
+import { Button } from "semantic-ui-react";
+import PortfolioModal from "./PortfolioModal";
 
 function Card({
   logo,
@@ -19,6 +21,7 @@ function Card({
   const [price, setPrice] = useState(0);
   const [background, setBackground] = useState(false);
   const [prevPrice, setPrevPrice] = useState(0);
+  const [openPortfolioModal, setOpenPortfolioModal] = useState(false);
   function backgroundAnimation() {
     setBackground(true);
     setTimeout(() => setBackground(false), 2000);
@@ -66,7 +69,10 @@ function Card({
   function handleClick() {
     setSelectedTicker(id);
   }
-  console.log(companyDetails);
+
+  function handlePortfolioOpen() {
+    setOpenPortfolioModal(true);
+  }
 
   let className;
   if (background) {
@@ -83,6 +89,14 @@ function Card({
 
   return (
     <>
+      <PortfolioModal
+        openPortfolioModal={openPortfolioModal}
+        setOpenPortfolioModal={setOpenPortfolioModal}
+        price={price}
+        name={name}
+        logo={logo}
+        id={id}
+      />
       <div class="column">
         <div
           className="ui fluid card"
@@ -101,8 +115,6 @@ function Card({
                     position: "absolute",
                     top: "10px",
                     right: "10px",
-                    // margin: "auto 0px",
-                    // textAlign: "center",
                     maxWidth: "50px",
                     borderRadius: "10%",
                   }}
@@ -140,7 +152,21 @@ function Card({
               </Link>
 
               <div className="extra content">
-                <button onClick={handleDelete}>Delete</button>
+                <div style={{ margin: "10%" }}>
+                  <Button
+                    style={{ marginRight: "20px" }}
+                    circular
+                    color="red"
+                    icon="delete"
+                    onClick={handleDelete}
+                  />
+                  <Button
+                    onClick={handlePortfolioOpen}
+                    circular
+                    color="green"
+                    icon="chart pie"
+                  />
+                </div>
               </div>
             </div>
           </div>

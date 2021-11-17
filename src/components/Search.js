@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API_KEY from "../API";
 import Option from "./Option";
 import { Input, Form, Button, Message } from "semantic-ui-react";
+import AddFavoriteModal from "./AddFavoriteModal";
 function Search({
   setSearchedTickers,
   searchedTickers,
@@ -14,6 +15,7 @@ function Search({
   const [header, setHeader] = useState("No Stock Added");
   const [loading, setLoading] = useState(false);
   const [elements, setElements] = useState([]);
+  const [open, setOpen] = useState(false);
   function handleInputChange(e) {
     if (!e.target.value.includes(" ")) {
       setSearchTerm(e.target.value);
@@ -37,11 +39,12 @@ function Search({
                 if (data.ticker && !data.ticker.includes(".")) {
                   setElements((elements) => [
                     ...elements,
-                    { name: data.name, symbol: data.ticker },
+                    { name: data.name, symbol: data.ticker, logo: data.logo },
                   ]);
                   // setResults(true)
                 }
                 setLoading(false);
+                setOpen(true);
                 // if(!results && !loading){
                 //   setElements([])
                 //   setHeader('No Stocks Found')
@@ -59,44 +62,58 @@ function Search({
     setSearchTerm("");
   }
   return (
-    <div className="search-container">
-      <Form
-        style={{
-          paddingTop: "20px",
-        }}
-        className="search-form"
-        onSubmit={handleSubmit}
-      >
-        <h3 className="search-text"></h3>
-        <Input
-          loading={loading}
-          size="big"
-          onChange={handleInputChange}
-          value={searchTerm}
-          placeholder="Add Stocks"
-          action={{ icon: "search" }}
-          style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
-        />
-        <Message error={!err} header={header} content={err} />
-        <table style={{ backgroundColor: "white" }}>
-          {elements &&
-            elements.map((element) => {
-              return (
-                <Option
-                  element={element}
-                  setLoading={setLoading}
-                  setErr={setErr}
-                  setHeader={setHeader}
-                  setSelectedTicker={setSelectedTicker}
-                  setCompanyDetails={setCompanyDetails}
-                  searchedTickers={searchedTickers}
-                  setSearchedTickers={setSearchedTickers}
-                  setElements={setElements}
-                />
-              );
-            })}
-        </table>
-        {/* <Form.Field
+    <>
+      <AddFavoriteModal
+        open={open}
+        setOpen={setOpen}
+        elements={elements}
+        setLoading={setLoading}
+        setErr={setErr}
+        setHeader={setHeader}
+        setSelectedTicker={setSelectedTicker}
+        setCompanyDetails={setCompanyDetails}
+        searchedTickers={searchedTickers}
+        setSearchedTickers={setSearchedTickers}
+        setElements={setElements}
+      />
+      <div className="search-container">
+        <Form
+          style={{
+            paddingTop: "20px",
+          }}
+          className="search-form"
+          onSubmit={handleSubmit}
+        >
+          <h3 className="search-text"></h3>
+          <Input
+            loading={loading}
+            size="big"
+            onChange={handleInputChange}
+            value={searchTerm}
+            placeholder="Add Stocks"
+            action={{ icon: "search" }}
+            style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
+          />
+          <Message error={!err} header={header} content={err} />
+          {/* <table style={{ backgroundColor: "white" }}>
+            {elements &&
+              elements.map((element) => {
+                return (
+                  <Option
+                    element={element}
+                    setLoading={setLoading}
+                    setErr={setErr}
+                    setHeader={setHeader}
+                    setSelectedTicker={setSelectedTicker}
+                    setCompanyDetails={setCompanyDetails}
+                    searchedTickers={searchedTickers}
+                    setSearchedTickers={setSearchedTickers}
+                    setElements={setElements}
+                  />
+                );
+              })}
+          </table> */}
+          {/* <Form.Field
         // id="form-input-control-error-email"
         // control={Input}
         // label="Email"
@@ -106,14 +123,15 @@ function Search({
         //   pointing: "below",
         // }}
         /> */}
-        {/* <Input action={{ icon: "search" }} placeholder="Search..." /> */}
-        {/* <Form.Field
+          {/* <Input action={{ icon: "search" }} placeholder="Search..." /> */}
+          {/* <Form.Field
           id="form-button-control-public"
           control={Button}
           content="Confirm"
         /> */}
-      </Form>
-    </div>
+        </Form>
+      </div>
+    </>
   );
 }
 export default Search;
