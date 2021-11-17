@@ -1,5 +1,6 @@
 import React from "react";
 import API_KEY from "../API";
+import { Table, Header, Button } from "semantic-ui-react";
 export default function Option({
   element,
   setLoading,
@@ -10,6 +11,7 @@ export default function Option({
   searchedTickers,
   setSearchedTickers,
   setElements,
+  setOpen,
 }) {
   function handleSelect() {
     if (searchedTickers.includes(element.symbol)) {
@@ -47,16 +49,24 @@ export default function Option({
         });
     }
     setElements([]);
+    setOpen(false);
   }
   return (
-    <tr>
-      <td
-        className="option"
-        style={{ border: "1px solid black" }}
-        onClick={handleSelect}
-      >
-        {element.name + ` (${element.symbol})`}
-      </td>
-    </tr>
+    <Table.Row textAlign="center">
+      <Table.Cell>
+        <Header as="h2" textAlign="center">
+          {element.logo ? (
+            <img src={element.logo} alt={element.name} />
+          ) : (
+            <p style={{ fontSize: "1.2rem" }}>No Logo</p>
+          )}
+        </Header>
+      </Table.Cell>
+      <Table.Cell singleLine>{element.name}</Table.Cell>
+      <Table.Cell>{element.symbol}</Table.Cell>
+      <Table.Cell>
+        <Button onClick={handleSelect}>Add Stock</Button>
+      </Table.Cell>
+    </Table.Row>
   );
 }
