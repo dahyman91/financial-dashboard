@@ -1,17 +1,12 @@
 import React from "react";
+import { Table } from "semantic-ui-react";
 
 function Snapshot({ companyMetrics }) {
-  //Snapshot
-  //52 Week high
   const fiftyTwoWeekHigh = companyMetrics ? companyMetrics["52WeekHigh"] : null;
-  //52 Week Low
   const fiftyTwoWeekLow = companyMetrics ? companyMetrics["52WeekLow"] : null;
-
-  //marketCapitalization (need to format)
   const marketCapitalization = companyMetrics
     ? `$${companyMetrics.marketCapitalization}`
     : null;
-  //dividendserShareAnnual
   const dividendPerShareAnnual = companyMetrics
     ? companyMetrics.dividendPerShareAnnual
     : null;
@@ -19,73 +14,71 @@ function Snapshot({ companyMetrics }) {
   const priceToEarning = companyMetrics
     ? companyMetrics["peNormalizedAnnual"]
     : null;
-  // Price-to-Book Ratio
   const bookValuePerShareAnnual = companyMetrics
     ? companyMetrics["bookValuePerShareAnnual"]
     : null;
-  // Debt-to-Equity Ratio (Annual)
   const debtToEquity = companyMetrics
     ? companyMetrics["totalDebt/totalEquityAnnual"]
     : null;
-  // Free Cash Flow (Annual)
   const freeCashFlow = companyMetrics
     ? companyMetrics["freeCashFlowAnnual"]
     : null;
 
   return (
-    <>
-      <h2 style={{ paddingTop: "5%", fontSize: "1.2rem", textAlign: "center" }}>
-        Snapshot
-      </h2>
-      <table className="ui table">
-        <tbody>
-          <tr>
-            <td>52 Week High</td>
-            <td>${fiftyTwoWeekHigh}</td>
-          </tr>
-          <tr>
-            <td>52 Week Low</td>
-            <td>${fiftyTwoWeekLow}</td>
-          </tr>
-          <tr>
-            <td>Total Market Capitalization (M)</td>
-            <td>{marketCapitalization}</td>
-          </tr>
-          <tr>
-            <td>Dividends per Share (Annual)</td>
-            <td>${dividendPerShareAnnual}</td>
-          </tr>
-        </tbody>
-      </table>
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "1.2rem",
-        }}
-      >
-        Annual Key Metrics
-      </h2>
-      <table className="ui table">
-        <tbody>
-          <tr>
-            <td>Price-to-Earnings </td>
-            <td>{priceToEarning}</td>
-          </tr>
-          <tr>
-            <td>Book/Share</td>
-            <td>{bookValuePerShareAnnual}</td>
-          </tr>
-          <tr>
-            <td>Debt/Equity</td>
-            <td>{debtToEquity}</td>
-          </tr>
-          <tr>
-            <td>FCF ( M)</td>
-            <td>${freeCashFlow}</td>
-          </tr>
-        </tbody>
-      </table>
-    </>
+    <Table
+      style={{
+        width: "21vw",
+        marginRight: "5%",
+        border: "1px solid #EDD193",
+      }}
+      collapsing
+    >
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Valuation Measure</Table.HeaderCell>
+          <Table.HeaderCell>Value</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>52 Week High</Table.Cell>
+          <Table.Cell>{fiftyTwoWeekHigh}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>52 Week Low</Table.Cell>
+          <Table.Cell>{fiftyTwoWeekLow}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Total Market Capitalization (M)</Table.Cell>
+          <Table.Cell>{marketCapitalization}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Dividends per Share (Annual)</Table.Cell>
+          <Table.Cell>
+            {dividendPerShareAnnual ? dividendPerShareAnnual : "None"}
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Book Value per Share</Table.Cell>
+          <Table.Cell>{bookValuePerShareAnnual}</Table.Cell>
+        </Table.Row>
+        {priceToEarning && (
+          <Table.Row>
+            <Table.Cell>Price-to-Earnings Ratio</Table.Cell>
+            <Table.Cell>{priceToEarning}</Table.Cell>
+          </Table.Row>
+        )}
+        <Table.Row>
+          <Table.Cell>Debt-to-Equity Ratio</Table.Cell>
+          <Table.Cell>{debtToEquity}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Free Cash Flow (M)</Table.Cell>
+          <Table.Cell>{freeCashFlow}</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
   );
 }
 
