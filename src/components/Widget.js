@@ -18,8 +18,8 @@ import TradingViewWidget from "react-tradingview-widget";
 
 const Widget = ({ selectedTicker }) => (
   <TradingViewWidget
-    width="650"
-    height="500"
+    width="680"
+    height="410"
     locale="us"
     hide_side_toolbar="true"
     hide_top_toolbar="true"

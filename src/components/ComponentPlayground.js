@@ -8,7 +8,7 @@ import TAWidget from "./TAWidget";
 import CompanyNews from "./CompanyNews";
 import StockDropdown from "./StockDropdown";
 import { useParams, useRouteMatch } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
+import { Grid, Tab } from "semantic-ui-react";
 import API_KEY from "../API";
 import PrimaryInfo from "./PrimaryInfo";
 
@@ -48,8 +48,8 @@ function ComponentPlayground({
       </Grid>
 
       <Grid centered>
-        <Grid.Column floated="left" width={5}>
-          <div style={{ height: "5vh" }}>
+        <Grid.Column floated="left" width={3}>
+          <div style={{ height: "5vh", marginLeft: "40%" }}>
             <StockDropdown
               searchedTickers={searchedTickers}
               setSelectedTicker={setSelectedTicker}
@@ -61,50 +61,49 @@ function ComponentPlayground({
           <div style={{ height: "5vh" }}>{date}</div>
         </Grid.Column>
       </Grid>
-      <Grid centered stackable columns={5}>
-        <Grid.Column width={3}>
+
+      <Grid centered stackable columns={3}>
+        <Grid.Column width={4}>
           <div
             style={{
-              height: "80vh",
+              height: "55vh",
+              marginLeft: "10%",
             }}
           >
             <PrimaryInfo selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
-        <Grid.Column
-          width={4}
-          style={{
-            marginLeft: "7%",
-            marginRight: "7%",
-            border: "1px solid rgba(0,0,0,0.15)",
-          }}
-        >
+
+        <Grid.Column width={8}>
+          <div
+            style={{
+              height: "40vh",
+              marginRight: "50%",
+            }}
+          >
+            <Widget
+              // style={{ height: "40vh" }}
+              selectedTicker={selectedTicker}
+            />
+          </div>
+        </Grid.Column>
+
+        <Grid.Column floated="left" width={4} style={{}}>
           <div
             style={{
               height: "40vh",
               borderRadius: "1%",
+              width: "100%",
             }}
           >
-            <Snapshot companyMetrics={companyMetrics} />
-          </div>
-        </Grid.Column>
-        <Grid.Column width={5}>
-          <div
-            style={{
-              height: "40vh",
-            }}
-          >
-            <TAWidget selectedTicker={selectedTicker} />
+            <Snapshot companyMetrics={companyMetrics} />{" "}
           </div>
         </Grid.Column>
 
-        <Grid.Row>
-          <Grid.Column width={8}>
+        <Grid.Row style={{}}>
+          <Grid.Column width={6}>
             <div>
-              <Widget
-                // style={{ height: "40vh" }}
-                selectedTicker={selectedTicker}
-              />
+              <TAWidget selectedTicker={selectedTicker} />
             </div>
           </Grid.Column>
           <Grid.Column width={8}>
