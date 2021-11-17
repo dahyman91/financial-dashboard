@@ -29,9 +29,9 @@ function Favorites({
       .then((res) => res.json())
       .then((data) => {
         setTableInfo(data);
-        console.log(data);
       });
   }, []);
+
 
   return (
     <>
@@ -90,8 +90,8 @@ function Favorites({
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
-        <PieChart tableInfo={tableInfo}/>
-        <PortfolioTable tableInfo={tableInfo}/>
+        {/* <PieChart /> */}
+        <PortfolioTable tableInfo={tableInfo} />
       </div>
     </>
   );
