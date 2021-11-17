@@ -77,3 +77,6 @@ body {
 .first-card h3 {
   margin: 13px 0;
 }
+.option:hover {
+  background-color: red;
+}
