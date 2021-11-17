@@ -23,7 +23,7 @@ const StockDropdown = ({
     history.push(`${data.value}`);
     setSelectedTicker(data.value);
 
-    // console.log(data.value);
+
   }
   return (
     <>
