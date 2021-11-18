@@ -1,6 +1,6 @@
 import React from "react";
 import Option from "./Option";
-import { Table, Modal } from "semantic-ui-react";
+import { Table, Modal, Message, Button, Icon } from "semantic-ui-react";
 
 function AddFavoriteModal({
   open,
@@ -49,7 +49,18 @@ function AddFavoriteModal({
           })
       ) : (
         <div>
-          <p>no results</p>
+          <Message color="red" info>
+            <Message.Header style={{ textAlign: "center" }}>
+              Stock Not Included in Database
+              <Button
+                onClick={() => setOpen(false)}
+                icon
+                style={{ position: "fixed", right: "5px", top: "7px" }}
+              >
+                <Icon color="black" name="window close" />
+              </Button>
+            </Message.Header>
+          </Message>
         </div>
       )}
     </Modal>

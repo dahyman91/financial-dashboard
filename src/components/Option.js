@@ -17,7 +17,7 @@ export default function Option({
     if (searchedTickers.includes(element.symbol)) {
       setLoading(false);
       setHeader("No Stock Added");
-      setErr("Read your buttons, it in der cuh");
+      setErr("You Already Follow This Stock");
     } else {
       setSearchedTickers([...searchedTickers, element.symbol]);
       fetch(
@@ -30,7 +30,6 @@ export default function Option({
           }
           if (data.ticker && !data.ticker.includes(".")) {
             setCompanyDetails((companyDetails) => [...companyDetails, data]);
-            // alert(`Added ${data.name} to your favorite stocks`);
             setLoading(false);
             setHeader("Stock Added");
             setErr(`Added ${data.name} to your favorite stocks`);
