@@ -6,10 +6,13 @@ function PieChart({ tableInfo }) {
   const [shares, setShares] = useState([]);
   const [price, setPrice] = useState([]);
   const [percent, setPercent] = useState([]);
-  let total = 0;
+  
 
   useEffect(() => {
     if (tableInfo) {
+      setPrice([])
+      setShares([])
+      setChartLabels([])
       tableInfo.map((stockSpread) => {
         setChartLabels((chartLables) => [...chartLables, stockSpread.symbol]);
         setShares((shares) => [...shares, stockSpread.shares]);
@@ -23,16 +26,21 @@ function PieChart({ tableInfo }) {
   }
 
   useEffect(() => {
+    let total = 0;
     if (price) {
       for (let x = 0; x < price.length; x++) {
         total += price[x] * shares[x];
       }
-      for (let y = 0; y < chartLables.length; y++) {
-        setPercent((percent) => [
-          ...percent,
-          percentage(price[y] * shares[y], total),
-        ]);
-      }
+      // for (let y = 0; y < chartLables.length; y++) {
+      //   setPercent((percent) => [
+      //     ...percent,
+      //     percentage(price[y] * shares[y], total),
+      //   ]);
+      // }
+      const newPercentages = price.map((p, y) =>
+        percentage(price[y] * shares[y], total)
+      );
+      setPercent(newPercentages)
     }
   }, [price]);
 
