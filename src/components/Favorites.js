@@ -9,6 +9,7 @@ import Metals from "./Metals";
 import MarketOverviewWidget from "./MarketOverviewWidget";
 import { Grid, Segment } from "semantic-ui-react";
 import PortfolioTable from "./PortfolioTable";
+import PieChart from "./PieChart";
 
 function Favorites({
   setSearchedTickers,
@@ -21,6 +22,7 @@ function Favorites({
   selectedTicker,
 }) {
   const [tableInfo, setTableInfo] = useState([]);
+  
 
   useEffect(() => {
     fetch("https://shrouded-cliffs-39592.herokuapp.com/tableData")
@@ -107,7 +109,7 @@ function Favorites({
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
-        {/* <PieChart /> */}
+        <PieChart tableInfo={tableInfo} />
       </div>
     </>
   );
