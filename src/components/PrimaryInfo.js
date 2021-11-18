@@ -43,22 +43,33 @@ function PrimaryInfo({ selectedTicker }) {
 
   return (
     <>
-      <div class="ui cards">
-        <div class="card" style={{ width: "20vw" }}>
-          <div class="content">
-            <img class="right floated mini ui image" src={image} alt={name} />
-            <div class="header">
+      <div className="ui cards">
+        <div
+          className="card"
+          style={{
+            width: "20vw",
+            filter: "drop-shadow(1px 1px rgba(0,0,0,0.1))",
+            border: "1px solid #EDD193",
+          }}
+        >
+          <div className="content">
+            <img
+              className="right floated mini ui image"
+              src={image}
+              alt={name}
+            />
+            <div className="header">
               {name} ({percentChange}%) {directionEmoji}
             </div>
-            <div class="meta">{exchange}</div>
-            <div class="description">Price -- {price} USD</div>
-            <div class="description">Industry -- {industry}</div>
-            <div class="description">Currency -- {currency}</div>
-            <div class="description">
+            <div className="meta">{exchange}</div>
+            <div className="description">Price -- {price} USD</div>
+            <div className="description">Industry -- {industry}</div>
+            <div className="description">Currency -- {currency}</div>
+            <div className="description">
               Shares Outstanding (M) -- {shareOutstanding}
             </div>
-            <div class="description">Country -- {country}</div>
-            <div class="description">IPO Date -- {ipo}</div>
+            <div className="description">Country -- {country}</div>
+            <div className="description">IPO Date -- {ipo}</div>
           </div>
         </div>
       </div>

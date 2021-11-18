@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Table } from "semantic-ui-react";
 
 function Cryptos() {
   const [data, setData] = useState([]);
@@ -25,69 +26,87 @@ function Cryptos() {
   }, []);
 
   return (
-    <table style={{ textAlign: "center" }}>
-      <tr>
-        <th>Name</th>
-        <th>Maket Cap ($M)</th>
-        <th>Price</th>
-      </tr>
+    <Table
+      celled
+      style={{
+        textAlign: "center",
+        border: "none",
+      }}
+    >
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Maket Cap ($M)</Table.HeaderCell>
+          <Table.HeaderCell>Price</Table.HeaderCell>
+        </Table.Row>
 
-      <tr>
-        <td>{data.data ? data.data[0].name : null}</td>
-        <td>
-          {data.data
-            ? Number.parseFloat(
-                Math.floor(data.data[0]["market_cap_usd"]) / 1000000
-              ).toFixed(2)
-            : null}
-        </td>
-        <td>{data.data ? data.data[0]["price_usd"] : null}</td>
-      </tr>
-      <tr>
-        <td>{data.data ? data.data[1].name : null}</td>
-        <td>
-          {data.data
-            ? Number.parseFloat(
-                Math.floor(data.data[1]["market_cap_usd"]) / 1000000
-              ).toFixed(2)
-            : null}
-        </td>
-        <td>{data.data ? data.data[1]["price_usd"] : null}</td>
-      </tr>
-      <tr>
-        <td>{data.data ? data.data[2].name : null}</td>
-        <td>
-          {data.data
-            ? Number.parseFloat(
-                Math.floor(data.data[2]["market_cap_usd"]) / 1000000
-              ).toFixed(2)
-            : null}
-        </td>
-        <td>{data.data ? data.data[2]["price_usd"] : null}</td>
-      </tr>
-      <tr>
-        <td>{data.data ? data.data[3].name : null}</td>
-        <td>
-          {data.data
-            ? Number.parseFloat(
-                Math.floor(data.data[3]["market_cap_usd"]) / 1000000
-              ).toFixed(2)
-            : null}
-        </td>
-        <td>{data.data ? data.data[3]["price_usd"] : null}</td>
-      </tr>
-      <tr>
-        <td>{data.data ? data.data[4].name : null}</td>
-        <td>
-          {data.data
-            ? Number.parseFloat(
-                Math.floor(data.data[4]["market_cap_usd"]) / 1000000
-              ).toFixed(2)
-            : null}
-        </td>
-        <td>{data.data ? data.data[4]["price_usd"] : null}</td>
-      </tr>
-    </table>
+        <Table.Row>
+          <Table.Cell>{data.data ? data.data[0].name : null}</Table.Cell>
+          <Table.Cell>
+            {data.data
+              ? Number.parseFloat(
+                  Math.floor(data.data[0]["market_cap_usd"]) / 1000000
+                ).toFixed(2)
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {data.data ? data.data[0]["price_usd"] : null}
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>{data.data ? data.data[1].name : null}</Table.Cell>
+          <Table.Cell>
+            {data.data
+              ? Number.parseFloat(
+                  Math.floor(data.data[1]["market_cap_usd"]) / 1000000
+                ).toFixed(2)
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {data.data ? data.data[1]["price_usd"] : null}
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>{data.data ? data.data[2].name : null}</Table.Cell>
+          <Table.Cell>
+            {data.data
+              ? Number.parseFloat(
+                  Math.floor(data.data[2]["market_cap_usd"]) / 1000000
+                ).toFixed(2)
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {data.data ? data.data[2]["price_usd"] : null}
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>{data.data ? data.data[3].name : null}</Table.Cell>
+          <Table.Cell>
+            {data.data
+              ? Number.parseFloat(
+                  Math.floor(data.data[3]["market_cap_usd"]) / 1000000
+                ).toFixed(2)
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {data.data ? data.data[3]["price_usd"] : null}
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>{data.data ? data.data[4].name : null}</Table.Cell>
+          <Table.Cell>
+            {data.data
+              ? Number.parseFloat(
+                  Math.floor(data.data[4]["market_cap_usd"]) / 1000000
+                ).toFixed(2)
+              : null}
+          </Table.Cell>
+          <Table.Cell>
+            {data.data ? data.data[4]["price_usd"] : null}
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
   );
 }
 

@@ -8,7 +8,6 @@ import Cryptos from "./Cryptos";
 import Metals from "./Metals";
 import MarketOverviewWidget from "./MarketOverviewWidget";
 import { Grid, Segment } from "semantic-ui-react";
-import PieChart from "./PieChart";
 import PortfolioTable from "./PortfolioTable";
 
 function Favorites({
@@ -21,7 +20,6 @@ function Favorites({
   setCurPage,
   selectedTicker,
 }) {
-  const [ticker, setTicker] = useState(false);
   const [tableInfo, setTableInfo] = useState([]);
 
   useEffect(() => {
@@ -31,7 +29,6 @@ function Favorites({
         setTableInfo(data);
       });
   }, []);
-
 
   return (
     <>
@@ -67,31 +64,50 @@ function Favorites({
             curPage={curPage}
           />
         </Grid>
-        <Grid stackable columns={3} style={{ margin: "0 1%" }}>
+        <Grid relaxed columns={2}>
+          <Grid.Column width={8}>
+            <PortfolioTable tableInfo={tableInfo} />
+          </Grid.Column>
+          <Grid.Column
+            width={7}
+            style={{ marginLeft: "3%", border: "1px solid black" }}
+          ></Grid.Column>
+        </Grid>
+        <Grid stackable columns={3} style={{ margin: "3% 1%" }}>
           <Grid.Column width={6}>
             <GeneralNews />
           </Grid.Column>
+
           <Grid.Column
             width={4}
             style={{ marginLeft: "3vw", marginRight: "3vw" }}
           >
+            <h3 style={{ textAlign: "center" }}>Alternative Markets</h3>
             <Segment
               style={{
                 backgroundColor: "ECB33E",
+                border: "1px solid #EDD193",
+                filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
               }}
             >
               <Cryptos style={{ textAlign: "center" }} />
             </Segment>
-            <Segment style={{ backgroundColor: "gold" }}>
+            <Segment
+              style={{
+                backgroundColor: "gold",
+                border: "1px solid #EDD193",
+                filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
+              }}
+            >
               <Metals />
             </Segment>
           </Grid.Column>
           <Grid.Column width={4}>
+            <h3 style={{ textAlign: "center", color: "#faf9f6" }}>HIRE US</h3>
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
         {/* <PieChart /> */}
-        <PortfolioTable tableInfo={tableInfo} />
       </div>
     </>
   );

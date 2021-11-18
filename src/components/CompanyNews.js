@@ -27,7 +27,7 @@ function CompanyNews({ selectedTicker }) {
     )
       .then((res) => res.json())
       .then((data) => setNewsStories(data));
-  }, [selectedTicker]);
+  }, [selectedTicker, startDate, endDate]);
 
   return (
     <div>
@@ -37,15 +37,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[0] ? (
               <img
+                alt="img"
                 src={newsStories[0].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[0] ? (
-                <a href={newsStories[0].url} target="_blank">
+                <a href={newsStories[0].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[0].headline}{" "}
                 </a>
@@ -60,15 +61,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[1] ? (
               <img
+                alt="img"
                 src={newsStories[1].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[1] ? (
-                <a href={newsStories[1].url} target="_blank">
+                <a href={newsStories[1].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[1].headline}{" "}
                 </a>
@@ -83,15 +85,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[2] ? (
               <img
+                alt="img"
                 src={newsStories[2].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[2] ? (
-                <a href={newsStories[2].url} target="_blank">
+                <a href={newsStories[2].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[2].headline}{" "}
                 </a>
@@ -106,15 +109,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[3] ? (
               <img
+                alt="img"
                 src={newsStories[3].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[3] ? (
-                <a href={newsStories[3].url} target="_blank">
+                <a href={newsStories[3].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[3].headline}{" "}
                 </a>
@@ -129,15 +133,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[4] ? (
               <img
+                alt="img"
                 src={newsStories[4].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[4] ? (
-                <a href={newsStories[4].url} target="_blank">
+                <a href={newsStories[4].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[4].headline}{" "}
                 </a>
@@ -152,15 +157,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[5] ? (
               <img
+                alt="img"
                 src={newsStories[5].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[6] ? (
-                <a href={newsStories[6].url} target="_blank">
+                <a href={newsStories[6].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[6].headline}{" "}
                 </a>
@@ -175,15 +181,16 @@ function CompanyNews({ selectedTicker }) {
           <td>
             {newsStories[7] ? (
               <img
+                alt="img"
                 src={newsStories[7].image}
-                style={{ "max-width": "80px", "border-radius": "3px" }}
+                style={{ maxWidth: "80px", borderRadius: "3px" }}
               />
             ) : null}
           </td>
           <td>
             <h4>
               {newsStories[8] ? (
-                <a href={newsStories[8].url} target="_blank">
+                <a href={newsStories[8].url} rel="noreferrer" target="_blank">
                   {" "}
                   {newsStories[8].headline}{" "}
                 </a>

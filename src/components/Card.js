@@ -46,7 +46,7 @@ function Card({
         );
       backgroundAnimation();
     },
-    [count]
+    [count, id]
   );
 
   function handleDelete() {
@@ -70,11 +70,9 @@ function Card({
     setSelectedTicker(id);
   }
 
-
   function handlePortfolioOpen() {
     setOpenPortfolioModal(true);
   }
-
 
   let className;
   if (background) {
@@ -99,7 +97,7 @@ function Card({
         logo={logo}
         id={id}
       />
-      <div class="column">
+      <div className="column">
         <div
           className="ui fluid card"
           style={{
@@ -166,7 +164,7 @@ function Card({
                     onClick={handlePortfolioOpen}
                     circular
                     color="green"
-                    icon="chart pie"
+                    icon="dollar"
                   />
                 </div>
               </div>

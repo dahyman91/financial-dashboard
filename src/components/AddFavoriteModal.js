@@ -1,7 +1,6 @@
 import React from "react";
 import Option from "./Option";
-import { Button, Header, Table, Modal } from "semantic-ui-react";
-import validateData from "json-server/lib/server/router/validate-data";
+import { Table, Modal } from "semantic-ui-react";
 
 function AddFavoriteModal({
   open,
@@ -26,27 +25,28 @@ function AddFavoriteModal({
       dimmer="blurring"
     >
       {elements[0] ? (
-        elements.map((element) => {
-          console.log(element);
-          return (
-            <Table celled padded>
-              <Table.Body>
-                <Option
-                  element={element}
-                  setLoading={setLoading}
-                  setErr={setErr}
-                  setHeader={setHeader}
-                  setSelectedTicker={setSelectedTicker}
-                  setCompanyDetails={setCompanyDetails}
-                  searchedTickers={searchedTickers}
-                  setSearchedTickers={setSearchedTickers}
-                  setElements={setElements}
-                  setOpen={setOpen}
-                />
-              </Table.Body>
-            </Table>
-          );
-        })
+        elements
+          .filter((e) => e === elements[0] || e.symbol !== elements[0].symbol)
+          .map((element) => {
+            return (
+              <Table padded>
+                <Table.Body>
+                  <Option
+                    element={element}
+                    setLoading={setLoading}
+                    setErr={setErr}
+                    setHeader={setHeader}
+                    setSelectedTicker={setSelectedTicker}
+                    setCompanyDetails={setCompanyDetails}
+                    searchedTickers={searchedTickers}
+                    setSearchedTickers={setSearchedTickers}
+                    setElements={setElements}
+                    setOpen={setOpen}
+                  />
+                </Table.Body>
+              </Table>
+            );
+          })
       ) : (
         <div>
           <p>no results</p>

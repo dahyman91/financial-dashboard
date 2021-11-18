@@ -30,10 +30,10 @@ function App() {
             .then((data) =>
               setCompanyDetails((companyDetails) => [...companyDetails, data])
             );
+          return null;
         });
       });
   }, []);
-
 
   return (
     <Switch>
