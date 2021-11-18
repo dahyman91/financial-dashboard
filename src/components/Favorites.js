@@ -55,6 +55,15 @@ function Favorites({
             />
           </Grid.Column>
         </Grid>
+        <h3
+          style={{
+            width: "10%",
+            margin: "1.5% auto 2% auto",
+            textAlign: "center",
+          }}
+        >
+          Followed Stocks
+        </h3>
         <Grid relaxed columns={6}>
           <CardContainer
             searchedTickers={searchedTickers}

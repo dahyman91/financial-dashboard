@@ -9,7 +9,7 @@ function CardContainer({
   setSearchedTickers,
   curPage,
   tableInfo,
-  setTableInfo
+  setTableInfo,
 }) {
   const [count, setCount] = useState(null);
 
@@ -17,7 +17,7 @@ function CardContainer({
     setInterval(() => setCount((count) => (count += 1)), 30000);
   }, []);
   return (
-    <div style={{ width: "90vw", margin: "2% auto" }}>
+    <div style={{ width: "90vw", margin: "0 auto" }}>
       <div className="ui six column stackable grid">
         {companyDetails.map((element) => (
           <Card
