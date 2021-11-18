@@ -17,11 +17,15 @@ function Card({
   setSearchedTickers,
   exchange,
   industry,
+  tableInfo,
+  setTableInfo
 }) {
   const [price, setPrice] = useState(0);
   const [background, setBackground] = useState(false);
   const [prevPrice, setPrevPrice] = useState(0);
   const [openPortfolioModal, setOpenPortfolioModal] = useState(false);
+  const [modalExists, setModalExists] = useState(false)
+
   function backgroundAnimation() {
     setBackground(true);
     setTimeout(() => setBackground(false), 2000);
@@ -72,6 +76,7 @@ function Card({
 
   function handlePortfolioOpen() {
     setOpenPortfolioModal(true);
+    setModalExists(true)
   }
 
   let className;
@@ -89,14 +94,17 @@ function Card({
 
   return (
     <>
-      <PortfolioModal
+      {modalExists && <PortfolioModal
         openPortfolioModal={openPortfolioModal}
         setOpenPortfolioModal={setOpenPortfolioModal}
         price={price}
         name={name}
         logo={logo}
         id={id}
-      />
+        tableInfo={tableInfo}
+        setTableInfo={setTableInfo}
+        setModalExists={setModalExists}
+      />}
       <div className="column">
         <div
           className="ui fluid card"

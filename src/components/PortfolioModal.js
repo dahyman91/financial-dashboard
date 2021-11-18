@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Modal, Input, Form } from "semantic-ui-react";
 
 function PortfolioModal({
@@ -8,32 +8,64 @@ function PortfolioModal({
   name,
   logo,
   id,
+  tableInfo,
+  setTableInfo,
+  setModalExists
 }) {
-  const [shares, setShares] = useState(null);
+  const [shares, setShares] = useState('');
+  const [exists, setExists] = useState(false)
+  
+  useEffect(()=>{
+    tableInfo && tableInfo.map(obj =>{
+      if (obj.symbol === id){
+        console.log( obj.shares ,' shares owned of ', obj.symbol)
+              setExists(true)
+              setShares(obj.shares)
+      }
+    })
+
+  }, [tableInfo])
+console.log(exists)
 
   function handleSubmit(e) {
-    e.preventDefault();
-    fetch("https://shrouded-cliffs-39592.herokuapp.com/tableData", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    if (shares >0){
+       
+    }
+    let body = exists ? {shares: shares} : {
         symbol: id,
         shares: shares,
         id: id,
         price: price,
-      }),
-    }).then((res) => console.log(res));
+      }
+    let method = exists ? 'PATCH' : 'POST'
+
+    e.preventDefault();
+    fetch(`https://shrouded-cliffs-39592.herokuapp.com/tableData${exists ? ('/' + id):''}`, {
+      method: method,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }).then((res) => res.json()).then(
+      data => {
+        if (exists){
+          setTableInfo(tableInfo => tableInfo.filter(element => element.symbol !== id))
+        }
+        setTableInfo(tableInfo => [...tableInfo, data])
+      }
+    );
     setOpenPortfolioModal(false);
   }
 
   return (
     <Modal
       basic
-      onClose={() => setOpenPortfolioModal(false)}
-      onOpen={() => setOpenPortfolioModal(true)}
+      onClose={() => {
+        setModalExists(false)
+        setOpenPortfolioModal(false)}}
+      onOpen={() => {
+        setOpenPortfolioModal(true)}}
       open={openPortfolioModal}
       size="small"
       dimmer="blurring"
@@ -68,7 +100,7 @@ function PortfolioModal({
                     }
                   }}
                 />
-                <Input onClick={handleSubmit} type="submit"></Input>
+                <Input onClick={handleSubmit} value= {exists ? 'Update Shares' : 'Add Shares'}type="submit"></Input>
               </Form>
             </Table.Cell>
           </Table.Row>

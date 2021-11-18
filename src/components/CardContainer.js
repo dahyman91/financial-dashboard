@@ -8,13 +8,14 @@ function CardContainer({
   searchedTickers,
   setSearchedTickers,
   curPage,
+  tableInfo,
+  setTableInfo
 }) {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
     setInterval(() => setCount((count) => (count += 1)), 30000);
   }, []);
-
   return (
     <div style={{ width: "90vw", margin: "2% auto" }}>
       <div className="ui six column stackable grid">
@@ -35,6 +36,8 @@ function CardContainer({
             searchedTickers={searchedTickers}
             setSearchedTickers={setSearchedTickers}
             curPage={curPage}
+            tableInfo={tableInfo}
+            setTableInfo={setTableInfo}
           />
         ))}
       </div>
