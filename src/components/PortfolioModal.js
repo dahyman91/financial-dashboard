@@ -29,9 +29,7 @@ console.log(exists)
 
   function handleSubmit(e) {
     if (shares >0){
-       
-    }
-    let body = exists ? {shares: shares} : {
+        let body = exists ? {shares: shares} : {
         symbol: id,
         shares: shares,
         id: id,
@@ -55,6 +53,15 @@ console.log(exists)
         setTableInfo(tableInfo => [...tableInfo, data])
       }
     );
+    }
+    else{
+      fetch(`https://shrouded-cliffs-39592.herokuapp.com/tableData${exists ? ('/' + id):''}`, {
+      method: 'DELETE',
+    }
+    )
+    setTableInfo(tableInfo => tableInfo.filter(element => element.symbol !== id))
+    }
+   
     setOpenPortfolioModal(false);
   }
 
