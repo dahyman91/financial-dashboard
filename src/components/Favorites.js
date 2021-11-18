@@ -69,7 +69,7 @@ function Favorites({
         </Grid>
         <Grid relaxed columns={2}>
           <Grid.Column width={8}>
-            <PortfolioTable tableInfo={tableInfo} />
+            <PortfolioTable tableInfo={tableInfo} setTableInfo={setTableInfo} />
           </Grid.Column>
           <Grid.Column width={7} style={{}}>
             <PieChart tableInfo={tableInfo} />
