@@ -1,8 +1,10 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
+import PieChart from "./PieChart";
 import { PortfolioTableRow } from "./PortfolioTableRow";
 
-const PortfolioTable = ({ tableInfo }) => (
+function PortfolioTable ({ tableInfo }) {
+  return (
   <Table
     singleLine
     style={{
@@ -29,6 +31,7 @@ const PortfolioTable = ({ tableInfo }) => (
       ))}
     </Table.Body>
   </Table>
-);
+  )
+      };
 
 export default PortfolioTable;

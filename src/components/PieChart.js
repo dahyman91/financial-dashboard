@@ -1,59 +1,50 @@
 
 import React, {useState, useEffect} from "react";
 import { Pie } from "react-chartjs-2";
-import API_KEY from "../API";
 
-const PieChart = () => {
-  const [stockName, setStockName] = useState("");
-  const [stockPrice, setStockPrice] = useState("");
-  const [chartData, setChartData] = useState([]);
+function PieChart ({tableInfo}) {
   const [chartLables, setChartLabels] = useState([])
-  const [tableInfo, setTableInfo] = useState({})
+  const [shares, setShares] = useState([])
+  const [price, setPrice] = useState([])
+  const [percent, setPercent] = useState([])
+  let total = 0;
 
-  console.log(tableInfo)
-
-  useEffect(() => {
-    fetch("https://shrouded-cliffs-39592.herokuapp.com/tableData")
-      .then((res) => res.json())
-      .then((data) => {
-        setTableInfo(data);
+    useEffect(() => {
+      if(tableInfo) {
         tableInfo.map((stockSpread) => {
-        setChartLabels((chartLables) => [...chartLables, stockSpread.symbol]);
-        console.log(chartLables)
+          setChartLabels((chartLables) => [...chartLables, stockSpread.symbol])
+          setShares((shares) => [...shares, stockSpread.shares])
+          setPrice((price) => [...price, stockSpread.price])
         })
-  })}, []);
+    }},[tableInfo])
 
-  useEffect(() => {
-    tableInfo.map((stockSpread) => {
-      setChartLabels((chartLables) => [...chartLables, stockSpread.symbol]);
-      console.log(chartLables)
-  })})
+    function percentage(partialValue, totalValue) {
+      return (100 * partialValue) / totalValue;
+    } 
 
-//   useEffect(() => {
-//     fetch(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${API_KEY}`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//           console.log(data)
-//           const forChart = (data.c * shares);
-//           setChartData((chartData) => [...chartData, forChart])
-//       })
-//   }, []);
-  
+    useEffect(() => {
+      if (price) {
+        for (let x = 0; x < price.length; x++) {
+          total += (price[x]*shares[x])
+        }
+        for (let y=0;y<chartLables.length;y++) {
+          setPercent((percent)=> [...percent, percentage((price[y] * shares[y]), total)])
+        }
+      }
+    }, [price]);
 
-//   useEffect(() => {
-//     fetch(
-//       `https://finnhub.io/api/v1/stock/profile2?symbol=${stock}&token=${API_KEY}`
-//     )
-//       .then((res) => res.json())
-//       .then((data) => setStockName(data.name));
-//   }, []);
+    
+
+
+
+    
 
   const data = {
-    labels: [chartLables],
+    labels: chartLables,
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5],
+        data: percent,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
