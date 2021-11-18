@@ -2,9 +2,16 @@ import React, { useState, useEffect } from "react";
 import API_KEY from "../API";
 import { Table, Button, Icon } from "semantic-ui-react";
 
-export const PortfolioTableRow = ({ stock, shares }) => {
+export const PortfolioTableRow = ({ stock, shares, setTableInfo, tableInfo }) => {
   const [stockName, setStockName] = useState("");
   const [stockPrice, setStockPrice] = useState("");
+  function handleDelete(){
+    setTableInfo(tableInfo => tableInfo.filter(element => element.symbol !== stock))
+    fetch(`https://shrouded-cliffs-39592.herokuapp.com/tableData/${stock}`, {
+      method: 'DELETE',
+    }
+    )
+  }
 
   useEffect(() => {
     fetch(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${API_KEY}`)
@@ -27,7 +34,7 @@ export const PortfolioTableRow = ({ stock, shares }) => {
       <Table.Cell>{shares}</Table.Cell>
       <Table.Cell>{stockPrice * shares}</Table.Cell>
       <Table.Cell>
-        <Button color="red" icon>
+        <Button color="red" icon onClick={handleDelete}>
           <Icon name="remove circle" />
         </Button>
       </Table.Cell>
