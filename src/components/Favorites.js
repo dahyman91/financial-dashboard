@@ -22,7 +22,6 @@ function Favorites({
   selectedTicker,
 }) {
   const [tableInfo, setTableInfo] = useState([]);
-  
 
   useEffect(() => {
     fetch("https://shrouded-cliffs-39592.herokuapp.com/tableData")
@@ -31,7 +30,7 @@ function Favorites({
         setTableInfo(data);
       });
   }, []);
-  console.log(setTableInfo)
+  console.log(setTableInfo);
 
   return (
     <>
@@ -73,10 +72,9 @@ function Favorites({
           <Grid.Column width={8}>
             <PortfolioTable tableInfo={tableInfo} />
           </Grid.Column>
-          <Grid.Column
-            width={7}
-            style={{ marginLeft: "3%", border: "1px solid black" }}
-          ></Grid.Column>
+          <Grid.Column width={7} style={{}}>
+            <PieChart tableInfo={tableInfo} />
+          </Grid.Column>
         </Grid>
         <Grid stackable columns={3} style={{ margin: "3% 1%" }}>
           <Grid.Column width={6}>
@@ -112,7 +110,6 @@ function Favorites({
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
-        <PieChart tableInfo={tableInfo} />
       </div>
     </>
   );

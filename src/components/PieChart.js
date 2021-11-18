@@ -1,43 +1,40 @@
-
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Pie } from "react-chartjs-2";
 
-function PieChart ({tableInfo}) {
-  const [chartLables, setChartLabels] = useState([])
-  const [shares, setShares] = useState([])
-  const [price, setPrice] = useState([])
-  const [percent, setPercent] = useState([])
+function PieChart({ tableInfo }) {
+  const [chartLables, setChartLabels] = useState([]);
+  const [shares, setShares] = useState([]);
+  const [price, setPrice] = useState([]);
+  const [percent, setPercent] = useState([]);
   let total = 0;
 
-    useEffect(() => {
-      if(tableInfo) {
-        tableInfo.map((stockSpread) => {
-          setChartLabels((chartLables) => [...chartLables, stockSpread.symbol])
-          setShares((shares) => [...shares, stockSpread.shares])
-          setPrice((price) => [...price, stockSpread.price])
-        })
-    }},[tableInfo])
+  useEffect(() => {
+    if (tableInfo) {
+      tableInfo.map((stockSpread) => {
+        setChartLabels((chartLables) => [...chartLables, stockSpread.symbol]);
+        setShares((shares) => [...shares, stockSpread.shares]);
+        setPrice((price) => [...price, stockSpread.price]);
+      });
+    }
+  }, [tableInfo]);
 
-    function percentage(partialValue, totalValue) {
-      return (100 * partialValue) / totalValue;
-    } 
+  function percentage(partialValue, totalValue) {
+    return (100 * partialValue) / totalValue;
+  }
 
-    useEffect(() => {
-      if (price) {
-        for (let x = 0; x < price.length; x++) {
-          total += (price[x]*shares[x])
-        }
-        for (let y=0;y<chartLables.length;y++) {
-          setPercent((percent)=> [...percent, percentage((price[y] * shares[y]), total)])
-        }
+  useEffect(() => {
+    if (price) {
+      for (let x = 0; x < price.length; x++) {
+        total += price[x] * shares[x];
       }
-    }, [price]);
-
-    
-
-
-
-    
+      for (let y = 0; y < chartLables.length; y++) {
+        setPercent((percent) => [
+          ...percent,
+          percentage(price[y] * shares[y], total),
+        ]);
+      }
+    }
+  }, [price]);
 
   const data = {
     labels: chartLables,
@@ -96,12 +93,34 @@ function PieChart ({tableInfo}) {
 
   return (
     <>
-      <div className="header" style={{ width: "500px" }}>
-        <h1 className="title">Portfolio</h1>
-        <Pie data={data} options={{}} />
+      <div
+        className="header"
+        style={{
+          margin: "auto",
+          height: "55vh",
+          width: "45vw",
+          border: "1px solid #EDD193",
+          filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
+          backgroundColor: "white",
+          padding: "15px 0",
+        }}
+      >
+        {/* <h1 className="title">Portfolio</h1> */}
+        <Pie
+          data={data}
+          options={{
+            maintainAspectRatio: false,
+            padding: 10,
+            plugins: {
+              legend: {
+                position: "right",
+              },
+            },
+          }}
+        />
       </div>
     </>
   );
-};
+}
 
 export default PieChart;
