@@ -9,7 +9,6 @@ const StockDropdown = ({
 }) => {
   const history = useHistory();
 
-  // Set stock options
   const stockOptions = [];
   searchedTickers.map((searchedTicker) => {
     const stock = {
@@ -17,13 +16,12 @@ const StockDropdown = ({
       value: searchedTicker,
     };
     stockOptions.push(stock);
+    return null;
   });
 
   function handleChange(e, data) {
     history.push(`${data.value}`);
     setSelectedTicker(data.value);
-
-
   }
   return (
     <>
@@ -35,6 +33,10 @@ const StockDropdown = ({
           search
           selection
           options={stockOptions}
+          style={{
+            border: "1px solid #EDD193",
+            filter: "drop-shadow(1px 1px rgba(0,0,0,0.1))",
+          }}
         />
       </div>
     </>

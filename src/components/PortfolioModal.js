@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Table, Modal, Input, Form } from "semantic-ui-react";
-import { ColorKeyframeTrack } from "three";
 
 function PortfolioModal({
   openPortfolioModal,
@@ -9,19 +8,8 @@ function PortfolioModal({
   name,
   logo,
   id,
-  elements,
-  setLoading,
-  setErr,
-  setHeader,
-  setSelectedTicker,
-  setCompanyDetails,
-  searchedTickers,
-  setSearchedTickers,
-  setElements,
 }) {
   const [shares, setShares] = useState(null);
-
-  console.log(shares);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,9 +23,12 @@ function PortfolioModal({
         symbol: id,
         shares: shares,
         id: id,
+        price: price,
       }),
     }).then((res) => console.log(res));
+    setOpenPortfolioModal(false);
   }
+
   return (
     <Modal
       basic
@@ -50,7 +41,6 @@ function PortfolioModal({
       <Table
         collapsing
         celled
-        // padded
         style={{
           borderRadius: "2%",
           border: "3px solid #EDD193",
@@ -59,7 +49,7 @@ function PortfolioModal({
         <Table.Body>
           <Table.Row>
             <Table.Cell>
-              <img src={logo} style={{ maxWidth: "50px" }} />
+              <img src={logo} style={{ maxWidth: "50px" }} alt={name} />
             </Table.Cell>
             <Table.Cell singleLine>{name}</Table.Cell>
             <Table.Cell style={{ textAlign: "center" }}>

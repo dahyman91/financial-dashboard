@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
-import KeyMetrics from "./KeyMetrics";
 import Snapshot from "./Snapshot";
 import Ticker from "./Ticker";
 import Widget from "./Widget";
 import TAWidget from "./TAWidget";
 import CompanyNews from "./CompanyNews";
 import StockDropdown from "./StockDropdown";
-import { useParams, useRouteMatch } from "react-router-dom";
-import { Grid, Tab } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
+import { Grid } from "semantic-ui-react";
 import API_KEY from "../API";
 import PrimaryInfo from "./PrimaryInfo";
 
@@ -34,14 +33,17 @@ function ComponentPlayground({
 
   const params = useParams();
 
-  useEffect(() => setSelectedTicker(params.selectedTicker), [selectedTicker]);
+  useEffect(
+    () => setSelectedTicker(params.selectedTicker),
+    [selectedTicker, params.selectedTicker, setSelectedTicker]
+  );
 
   return (
     <>
       <Nav />
       <Grid centered>
         <Grid.Column width={16}>
-          <div style={{ height: "5vh" }}>
+          <div style={{ height: "5vh", border: "1px solid #EDD193" }}>
             <Ticker />
           </div>
         </Grid.Column>
@@ -49,7 +51,12 @@ function ComponentPlayground({
 
       <Grid centered>
         <Grid.Column floated="left" width={3}>
-          <div style={{ height: "5vh", marginLeft: "40%" }}>
+          <div
+            style={{
+              height: "5vh",
+              marginLeft: "40%",
+            }}
+          >
             <StockDropdown
               searchedTickers={searchedTickers}
               setSelectedTicker={setSelectedTicker}
@@ -58,7 +65,7 @@ function ComponentPlayground({
           </div>
         </Grid.Column>
         <Grid.Column floated="right" width={3}>
-          <div style={{ height: "5vh" }}>{date}</div>
+          <div style={{ height: "3vh", fontSize: "1.3rem" }}>{date}</div>
         </Grid.Column>
       </Grid>
 
@@ -81,14 +88,11 @@ function ComponentPlayground({
               marginRight: "50%",
             }}
           >
-            <Widget
-              // style={{ height: "40vh" }}
-              selectedTicker={selectedTicker}
-            />
+            <Widget selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
 
-        <Grid.Column floated="left" width={4} style={{}}>
+        <Grid.Column floated="left" width={4}>
           <div
             style={{
               height: "40vh",
@@ -96,7 +100,7 @@ function ComponentPlayground({
               width: "100%",
             }}
           >
-            <Snapshot companyMetrics={companyMetrics} />{" "}
+            <Snapshot companyMetrics={companyMetrics} />
           </div>
         </Grid.Column>
 
@@ -115,21 +119,6 @@ function ComponentPlayground({
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
-      {/* <StockDropdown
-        searchedTickers={searchedTickers}
-        setSelectedTicker={setSelectedTicker}
-      />
-      <div
-        style={{
-          width: "100%",
-        }}
-      >
-        {selectedTicker ? (
-          <BasicFinancials selectedTicker={selectedTicker} />
-        ) : null}
-        <Widget selectedTicker={selectedTicker} />
-      </div> */}
     </>
   );
 }

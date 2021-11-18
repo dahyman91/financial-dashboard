@@ -62,10 +62,16 @@ export default function Option({
           )}
         </Header>
       </Table.Cell>
-      <Table.Cell singleLine>{element.name}</Table.Cell>
-      <Table.Cell>{element.symbol}</Table.Cell>
+      <Table.Cell singleLine style={{ width: "20vw" }}>
+        {element.name}
+      </Table.Cell>
       <Table.Cell>
-        <Button onClick={handleSelect}>Add Stock</Button>
+        <h3 style={{ float: "right" }}>{element.symbol}</h3>
+      </Table.Cell>
+      <Table.Cell>
+        <Button style={{ float: "right" }} onClick={handleSelect}>
+          Add Stock
+        </Button>
       </Table.Cell>
     </Table.Row>
   );

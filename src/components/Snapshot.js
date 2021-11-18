@@ -30,6 +30,7 @@ function Snapshot({ companyMetrics }) {
         width: "21vw",
         marginRight: "5%",
         border: "1px solid #EDD193",
+        filter: "drop-shadow(1px 1px rgba(0,0,0,0.1))",
       }}
       collapsing
     >
