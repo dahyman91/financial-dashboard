@@ -5,6 +5,13 @@ import { Table, Button, Icon } from "semantic-ui-react";
 export const PortfolioTableRow = ({ stock, shares, tableInfo, setTableInfo }) => {
   const [stockName, setStockName] = useState("");
   const [stockPrice, setStockPrice] = useState("");
+  function handleDelete(){
+    setTableInfo(tableInfo => tableInfo.filter(element => element.symbol !== stock))
+    fetch(`https://shrouded-cliffs-39592.herokuapp.com/tableData/${stock}`, {
+      method: 'DELETE',
+    }
+    )
+  }
 
   function handleDelete() {
     setTableInfo((tableInfo) =>
