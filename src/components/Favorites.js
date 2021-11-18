@@ -9,6 +9,8 @@ import Metals from "./Metals";
 import MarketOverviewWidget from "./MarketOverviewWidget";
 import { Grid, Segment } from "semantic-ui-react";
 import PortfolioTable from "./PortfolioTable";
+import PieChart from "./PieChart";
+
 
 function Favorites({
   setSearchedTickers,
@@ -70,10 +72,9 @@ function Favorites({
           <Grid.Column width={8}>
             <PortfolioTable tableInfo={tableInfo} setTableInfo={setTableInfo}/>
           </Grid.Column>
-          <Grid.Column
-            width={7}
-            style={{ marginLeft: "3%", border: "1px solid black" }}
-          ></Grid.Column>
+          <Grid.Column width={7} style={{}}>
+            <PieChart tableInfo={tableInfo} />
+          </Grid.Column>
         </Grid>
         <Grid stackable columns={3} style={{ margin: "3% 1%" }}>
           <Grid.Column width={6}>
