@@ -30,7 +30,6 @@ function Favorites({
         setTableInfo(data);
       });
   }, []);
-  console.log(setTableInfo);
 
   return (
     <>
