@@ -18,13 +18,13 @@ function Card({
   exchange,
   industry,
   tableInfo,
-  setTableInfo
+  setTableInfo,
 }) {
   const [price, setPrice] = useState(0);
   const [background, setBackground] = useState(false);
   const [prevPrice, setPrevPrice] = useState(0);
   const [openPortfolioModal, setOpenPortfolioModal] = useState(false);
-  const [modalExists, setModalExists] = useState(false)
+  const [modalExists, setModalExists] = useState(false);
 
   function backgroundAnimation() {
     setBackground(true);
@@ -76,7 +76,7 @@ function Card({
 
   function handlePortfolioOpen() {
     setOpenPortfolioModal(true);
-    setModalExists(true)
+    setModalExists(true);
   }
 
   let className;
@@ -94,17 +94,19 @@ function Card({
 
   return (
     <>
-      {modalExists && <PortfolioModal
-        openPortfolioModal={openPortfolioModal}
-        setOpenPortfolioModal={setOpenPortfolioModal}
-        price={price}
-        name={name}
-        logo={logo}
-        id={id}
-        tableInfo={tableInfo}
-        setTableInfo={setTableInfo}
-        setModalExists={setModalExists}
-      />}
+      {modalExists && (
+        <PortfolioModal
+          openPortfolioModal={openPortfolioModal}
+          setOpenPortfolioModal={setOpenPortfolioModal}
+          price={price}
+          name={name}
+          logo={logo}
+          id={id}
+          tableInfo={tableInfo}
+          setTableInfo={setTableInfo}
+          setModalExists={setModalExists}
+        />
+      )}
       <div className="column">
         <div
           className="ui fluid card"
@@ -141,7 +143,6 @@ function Card({
                 symbol={id}
                 style={{ position: "fixed", bottom: "0" }}
               ></SmallChart>
-              <input placeholder="IM NICE" />
             </div>
 
             <div
