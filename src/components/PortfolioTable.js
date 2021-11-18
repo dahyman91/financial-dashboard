@@ -3,7 +3,7 @@ import { Table } from "semantic-ui-react";
 import PieChart from "./PieChart";
 import { PortfolioTableRow } from "./PortfolioTableRow";
 
-function PortfolioTable({ tableInfo }) {
+function PortfolioTable({ tableInfo, setTableInfo }) {
   return (
     <Table
       singleLine
@@ -30,6 +30,8 @@ function PortfolioTable({ tableInfo }) {
               key={element.symbol}
               stock={element.symbol}
               shares={element.shares}
+              tableInfo={tableInfo}
+              setTableInfo={setTableInfo}
             />
           ))}
       </Table.Body>
