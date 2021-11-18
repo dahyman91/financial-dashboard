@@ -76,7 +76,7 @@ function Search({
             size="big"
             onChange={handleInputChange}
             value={searchTerm}
-            placeholder="Add Stocks"
+            placeholder="Track Stocks"
             action={{ icon: "search" }}
             style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
           />
