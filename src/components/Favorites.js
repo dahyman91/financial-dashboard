@@ -76,15 +76,36 @@ function Favorites({
             setTableInfo={setTableInfo}
           />
         </Grid>
-        <Grid relaxed columns={2}>
-          <Grid.Column width={8}>
-            <PortfolioTable tableInfo={tableInfo} setTableInfo={setTableInfo} />
-          </Grid.Column>
-          <Grid.Column width={7} style={{}}>
-            <PieChart tableInfo={tableInfo} />
-          </Grid.Column>
-        </Grid>
-        <Grid stackable columns={3} style={{ margin: "3% 1%" }}>
+
+        {tableInfo[0] ? (
+          <Grid relaxed columns={2}>
+            <Grid.Column width={8}>
+              <PortfolioTable
+                tableInfo={tableInfo}
+                setTableInfo={setTableInfo}
+              />
+            </Grid.Column>
+            <Grid.Column width={7} style={{}}>
+              <PieChart tableInfo={tableInfo} />
+            </Grid.Column>
+          </Grid>
+        ) : (
+          <h3
+            style={{
+              border: "1px solid #EDD193",
+              filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
+              background: "white",
+              padding: "10px",
+              width: "20%",
+              margin: "3% auto 0 auto",
+              textAlign: "center",
+            }}
+          >
+            Use Green Buttons to Add Stocks to Portfolio
+          </h3>
+        )}
+
+        <Grid stackable columns={3} style={{ margin: "1.5% 1%" }}>
           <Grid.Column width={6}>
             <GeneralNews />
           </Grid.Column>

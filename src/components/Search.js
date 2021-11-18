@@ -80,7 +80,12 @@ function Search({
             action={{ icon: "search" }}
             style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
           />
-          <Message error={!err} header={header} content={err} />
+          <Message
+            style={{ textAlign: "center" }}
+            error={!err}
+            header={header}
+            content={err}
+          />
         </Form>
       </div>
     </>
