@@ -11,7 +11,6 @@ import { Grid, Segment } from "semantic-ui-react";
 import PortfolioTable from "./PortfolioTable";
 import PieChart from "./PieChart";
 
-
 function Favorites({
   setSearchedTickers,
   searchedTickers,
@@ -70,7 +69,7 @@ function Favorites({
         </Grid>
         <Grid relaxed columns={2}>
           <Grid.Column width={8}>
-            <PortfolioTable tableInfo={tableInfo} setTableInfo={setTableInfo}/>
+            <PortfolioTable tableInfo={tableInfo} setTableInfo={setTableInfo} />
           </Grid.Column>
           <Grid.Column width={7} style={{}}>
             <PieChart tableInfo={tableInfo} />
@@ -110,8 +109,36 @@ function Favorites({
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
-        {/* <PieChart /> */}
       </div>
+      <footer>
+        <div
+          className="ui vertical footer segment"
+          style={{
+            backgroundColor: "white",
+            color: "white",
+            borderTop: "2px solid #EDD193",
+          }}
+        >
+          <div
+            className="ui container"
+            style={{
+              justifyContent: "space-between",
+              width: "80%",
+              display: "flex",
+            }}
+          >
+            <a href="#" style={{ cursor: "pointer", color: "black" }}>
+              ben-jackson.com
+            </a>
+            <a href="#" style={{ cursor: "pointer", color: "black" }}>
+              dan-hyman.com
+            </a>
+            <a href="#" style={{ cursor: "pointer", color: "black" }}>
+              andrew-busel.com
+            </a>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
