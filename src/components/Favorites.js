@@ -29,6 +29,7 @@ function Favorites({
         setTableInfo(data);
       });
   }, []);
+  console.log(setTableInfo)
 
   return (
     <>
@@ -62,6 +63,8 @@ function Favorites({
             setSelectedTicker={setSelectedTicker}
             setSearchedTickers={setSearchedTickers}
             curPage={curPage}
+            tableInfo={tableInfo}
+            setTableInfo={setTableInfo}
           />
         </Grid>
         <Grid relaxed columns={2}>

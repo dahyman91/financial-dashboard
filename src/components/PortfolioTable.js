@@ -20,7 +20,7 @@ const PortfolioTable = ({ tableInfo }) => (
     </Table.Header>
 
     <Table.Body>
-      {tableInfo.map((element) => (
+      {tableInfo.filter(element => element.shares> 0).map((element) => (
         <PortfolioTableRow
           key={element.symbol}
           stock={element.symbol}
