@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "semantic-ui-react";
 import { PortfolioTableRow } from "./PortfolioTableRow";
 
 function PortfolioTable({ tableInfo, setTableInfo }) {
+  const [totalPosition, setTotalPosition] = useState(0);
+  const [totalShares, setTotalShares] = useState(0);
+
   return (
     <Table
       singleLine
@@ -31,8 +34,20 @@ function PortfolioTable({ tableInfo, setTableInfo }) {
               shares={element.shares}
               tableInfo={tableInfo}
               setTableInfo={setTableInfo}
+              setTotalPosition={setTotalPosition}
+              totalPosition={totalPosition}
+              setTotalShares={setTotalShares}
             />
           ))}
+        <Table.Row style={{ fontWeight: "1000", textAlign: "center" }}>
+          <Table.Cell>Position Summary</Table.Cell>
+          <Table.Cell>
+            ${parseFloat(totalPosition / totalShares).toFixed(2)} (avg)
+          </Table.Cell>
+          <Table.Cell>{totalShares}</Table.Cell>
+          <Table.Cell>${parseFloat(totalPosition).toFixed(2)}</Table.Cell>
+          <Table.Cell></Table.Cell>
+        </Table.Row>
       </Table.Body>
     </Table>
   );
