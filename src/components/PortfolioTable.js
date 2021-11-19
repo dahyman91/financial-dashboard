@@ -1,6 +1,5 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import PieChart from "./PieChart";
 import { PortfolioTableRow } from "./PortfolioTableRow";
 
 function PortfolioTable({ tableInfo, setTableInfo }) {
