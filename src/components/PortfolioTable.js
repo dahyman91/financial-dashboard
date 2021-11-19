@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "semantic-ui-react";
 import PieChart from "./PieChart";
 import { PortfolioTableRow } from "./PortfolioTableRow";
 
 function PortfolioTable({ tableInfo, setTableInfo }) {
+  const [totalPosition, setTotalPosition] = useState(0);
+  const [totalShares, setTotalShares] = useState(0);
+
   return (
     <Table
       singleLine
@@ -32,8 +35,19 @@ function PortfolioTable({ tableInfo, setTableInfo }) {
               shares={element.shares}
               tableInfo={tableInfo}
               setTableInfo={setTableInfo}
+              setTotalPosition={setTotalPosition}
+              totalPosition={totalPosition}
+              totalShares={totalShares}
+              setTotalShares={setTotalShares}
             />
           ))}
+        <Table.Row style={{ textAlign: "center" }}>
+          <Table.Cell>Total Position</Table.Cell>
+          <Table.Cell></Table.Cell>
+          <Table.Cell></Table.Cell>
+          <Table.Cell>${totalPosition}</Table.Cell>
+          <Table.Cell></Table.Cell>
+        </Table.Row>
       </Table.Body>
     </Table>
   );
