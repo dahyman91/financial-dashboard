@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Pie } from "react-chartjs-2";
+import { Chart } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+Chart.register(ChartDataLabels);
 
 function PieChart({ tableInfo }) {
   const [chartLables, setChartLabels] = useState([]);
@@ -22,7 +26,7 @@ function PieChart({ tableInfo }) {
   }, [tableInfo]);
 
   function percentage(partialValue, totalValue) {
-    return (100 * partialValue) / totalValue;
+    return ((100 * partialValue) / totalValue).toFixed(2);
   }
 
   useEffect(() => {
@@ -123,6 +127,11 @@ function PieChart({ tableInfo }) {
               legend: {
                 position: "right",
               },
+              datalabels: {
+                formatter: (val) => {
+                  return val + "%";
+                },
+              },
             },
           }}
         />
@@ -132,3 +141,5 @@ function PieChart({ tableInfo }) {
 }
 
 export default PieChart;
+
+

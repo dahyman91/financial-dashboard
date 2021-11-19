@@ -28,11 +28,13 @@ export const PortfolioTableRow = ({
   useEffect(() => {
     fetch(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${API_KEY}`)
       .then((res) => res.json())
+
       .then((data) => {
         setStockPrice(data.c);
         setTotalPosition((totalPosition) => totalPosition + data.c * shares);
         setTotalShares((totalShares) => totalShares + parseInt(shares));
       });
+
   }, [stock]);
 
   useEffect(() => {
@@ -48,7 +50,9 @@ export const PortfolioTableRow = ({
       <Table.Cell>{stockName}</Table.Cell>
       <Table.Cell>${parseFloat(stockPrice).toFixed(2)}</Table.Cell>
       <Table.Cell>{shares}</Table.Cell>
+
       <Table.Cell>${parseFloat(stockPrice * shares).toFixed(2)}</Table.Cell>
+
       <Table.Cell>
         <Button color="red" icon onClick={handleDelete}>
           <Icon name="remove circle" />
