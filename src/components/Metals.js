@@ -25,7 +25,7 @@ function Metals() {
       <h3 style={{ textAlign: "center" }}>Price of Gold per Ounce</h3>
 
       <h4 style={{ marginTop: "0", textAlign: "center" }}>
-        {goldPrice ? `$${goldPrice}` : "$1865"}
+        {goldPrice ? `$${goldPrice}` : "$1859.54"}
       </h4>
     </>
   );
