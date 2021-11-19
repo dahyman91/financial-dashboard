@@ -78,17 +78,28 @@ function Favorites({
         </Grid>
 
         {tableInfo[0] ? (
-          <Grid relaxed columns={2}>
-            <Grid.Column width={8}>
-              <PortfolioTable
-                tableInfo={tableInfo}
-                setTableInfo={setTableInfo}
-              />
-            </Grid.Column>
-            <Grid.Column width={7} style={{}}>
-              <PieChart tableInfo={tableInfo} />
-            </Grid.Column>
-          </Grid>
+          <>
+            <h3
+              style={{
+                width: "20%",
+                margin: "3% auto 2% auto",
+                textAlign: "center",
+              }}
+            >
+              Portfolio Summary
+            </h3>
+            <Grid relaxed columns={2}>
+              <Grid.Column width={8}>
+                <PortfolioTable
+                  tableInfo={tableInfo}
+                  setTableInfo={setTableInfo}
+                />
+              </Grid.Column>
+              <Grid.Column width={7} style={{}}>
+                <PieChart tableInfo={tableInfo} />
+              </Grid.Column>
+            </Grid>
+          </>
         ) : (
           <h3
             style={{
