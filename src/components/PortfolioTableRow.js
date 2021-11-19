@@ -18,6 +18,8 @@ export const PortfolioTableRow = ({
     setTableInfo((tableInfo) =>
       tableInfo.filter((element) => element.symbol !== stock)
     );
+    setTotalPosition((totalPosition) => totalPosition - stockPrice * shares);
+    setTotalShares((totalShares) => totalShares - parseInt(shares));
     fetch(`https://shrouded-cliffs-39592.herokuapp.com/tableData/${stock}`, {
       method: "DELETE",
     });
@@ -29,11 +31,10 @@ export const PortfolioTableRow = ({
       .then((data) => {
         setStockPrice(data.c);
         setTotalPosition((totalPosition) => totalPosition + data.c * shares);
+        setTotalShares((totalShares) => totalShares + parseInt(shares));
       });
   }, [stock]);
 
-  console.log(totalPosition);
-  // console.log(totalShares);
   useEffect(() => {
     fetch(
       `https://finnhub.io/api/v1/stock/profile2?symbol=${stock}&token=${API_KEY}`
@@ -45,9 +46,9 @@ export const PortfolioTableRow = ({
   return (
     <Table.Row style={{ textAlign: "center" }}>
       <Table.Cell>{stockName}</Table.Cell>
-      <Table.Cell>{stockPrice}</Table.Cell>
+      <Table.Cell>${parseFloat(stockPrice).toFixed(2)}</Table.Cell>
       <Table.Cell>{shares}</Table.Cell>
-      <Table.Cell>{stockPrice * shares}</Table.Cell>
+      <Table.Cell>${parseFloat(stockPrice * shares).toFixed(2)}</Table.Cell>
       <Table.Cell>
         <Button color="red" icon onClick={handleDelete}>
           <Icon name="remove circle" />

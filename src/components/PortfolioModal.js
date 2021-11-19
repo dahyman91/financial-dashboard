@@ -16,6 +16,8 @@ function PortfolioModal({
   const [exists, setExists] = useState(false);
 
   useEffect(() => {
+    setExists(false);
+    setShares("");
     tableInfo &&
       tableInfo.map((obj) => {
         if (obj.symbol === id) {
