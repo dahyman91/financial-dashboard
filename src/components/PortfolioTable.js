@@ -37,15 +37,16 @@ function PortfolioTable({ tableInfo, setTableInfo }) {
               setTableInfo={setTableInfo}
               setTotalPosition={setTotalPosition}
               totalPosition={totalPosition}
-              totalShares={totalShares}
               setTotalShares={setTotalShares}
             />
           ))}
-        <Table.Row style={{ textAlign: "center" }}>
-          <Table.Cell>Total Position</Table.Cell>
-          <Table.Cell></Table.Cell>
-          <Table.Cell></Table.Cell>
-          <Table.Cell>${totalPosition}</Table.Cell>
+        <Table.Row style={{ fontWeight: "1000", textAlign: "center" }}>
+          <Table.Cell>Position Summary</Table.Cell>
+          <Table.Cell>
+            ${parseFloat(totalPosition / totalShares).toFixed(2)} (avg)
+          </Table.Cell>
+          <Table.Cell>{totalShares}</Table.Cell>
+          <Table.Cell>${parseFloat(totalPosition).toFixed(2)}</Table.Cell>
           <Table.Cell></Table.Cell>
         </Table.Row>
       </Table.Body>
