@@ -119,35 +119,6 @@ function ComponentPlayground({
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <footer>
-        <div
-          className="ui vertical footer segment"
-          style={{
-            backgroundColor: "white",
-            color: "white",
-            borderTop: "2px solid #EDD193",
-          }}
-        >
-          <div
-            className="ui container"
-            style={{
-              justifyContent: "space-between",
-              width: "80%",
-              display: "flex",
-            }}
-          >
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              ben-jackson.com
-            </a>
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              dan-hyman.com
-            </a>
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              andrew-busel.com
-            </a>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

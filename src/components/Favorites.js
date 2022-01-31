@@ -151,7 +151,7 @@ function Favorites({
           </Grid.Column>
         </Grid>
       </div>
-      <footer>
+      {/* <footer>
         <div
           className="ui vertical footer segment"
           style={{
@@ -179,7 +179,7 @@ function Favorites({
             </a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
