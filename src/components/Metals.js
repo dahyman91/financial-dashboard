@@ -21,13 +21,20 @@ function Metals() {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        border: "1px solid gold",
+        backgroundColor: "white",
+        width: "100%",
+        margin: "auto",
+      }}
+    >
       <h3 style={{ textAlign: "center" }}>Price of Gold per Ounce</h3>
 
       <h4 style={{ marginTop: "0", textAlign: "center" }}>
-        {goldPrice ? `$${goldPrice}` : "$1859.54"}
+        {goldPrice ? `$${goldPrice}` : "$1807.54"}
       </h4>
-    </>
+    </div>
   );
 }
 

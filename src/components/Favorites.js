@@ -43,7 +43,7 @@ function Favorites({
         <Ticker style={{ marginTop: "0" }} />
       </div>
 
-      <div style={{ margin: "0 2vw" }}>
+      <div style={{ margin: "2vh 3vw" }}>
         <Grid columns={1}>
           <Grid.Column>
             <Search
@@ -57,14 +57,14 @@ function Favorites({
         </Grid>
         <h3
           style={{
-            width: "10%",
-            margin: "1.5% auto 2% auto",
+            width: "40%",
+            margin: "4% auto",
             textAlign: "center",
           }}
         >
           Followed Stocks
         </h3>
-        <Grid relaxed columns={6}>
+        <Grid relaxed columns={4}>
           <CardContainer
             searchedTickers={searchedTickers}
             companyDetails={companyDetails}
@@ -107,7 +107,7 @@ function Favorites({
               filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
               background: "white",
               padding: "10px",
-              width: "20%",
+              width: "40%",
               margin: "3% auto 0 auto",
               textAlign: "center",
             }}
@@ -123,63 +123,21 @@ function Favorites({
 
           <Grid.Column
             width={4}
-            style={{ marginLeft: "3vw", marginRight: "3vw" }}
+            style={{ marginLeft: "4vw", marginRight: "6vw" }}
           >
             <h3 style={{ textAlign: "center" }}>Alternative Markets</h3>
-            <Segment
-              style={{
-                backgroundColor: "ECB33E",
-                border: "1px solid #EDD193",
-                filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
-              }}
-            >
-              <Cryptos style={{ textAlign: "center" }} />
-            </Segment>
-            <Segment
-              style={{
-                backgroundColor: "gold",
-                border: "1px solid #EDD193",
-                filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
-              }}
-            >
-              <Metals />
-            </Segment>
+            <Cryptos
+              style={{ textAlign: "center", border: "1px solid gold" }}
+            />
+
+            <Metals />
           </Grid.Column>
-          <Grid.Column width={4}>
+          <Grid.Column width={3}>
             <h3 style={{ textAlign: "center", color: "#faf9f6" }}>HIRE US</h3>
             <MarketOverviewWidget />
           </Grid.Column>
         </Grid>
       </div>
-      {/* <footer>
-        <div
-          className="ui vertical footer segment"
-          style={{
-            backgroundColor: "white",
-            color: "white",
-            borderTop: "2px solid #EDD193",
-          }}
-        >
-          <div
-            className="ui container"
-            style={{
-              justifyContent: "space-between",
-              width: "80%",
-              display: "flex",
-            }}
-          >
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              ben-jackson.com
-            </a>
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              dan-hyman.com
-            </a>
-            <a href="#" style={{ cursor: "pointer", color: "black" }}>
-              andrew-busel.com
-            </a>
-          </div>
-        </div>
-      </footer> */}
     </>
   );
 }

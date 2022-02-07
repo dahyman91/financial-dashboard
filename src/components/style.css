@@ -78,15 +78,13 @@ body {
   margin: 13px 0;
 }
 
-@media screen and (max-width: 1085px) {
-  body {
-    background-color: lightgreen;
-  }
-}
-
 img {
   width: 50px;
   height: auto;
   background: url(https://www.fool.com/investing/2021/11/17/why-tesla-stock-surged-higher-on-wednesday/)
     no-repeat scroll 0 0;
+}
+
+* {
+  /* border: 1px solid red; */
 }

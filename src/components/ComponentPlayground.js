@@ -49,12 +49,13 @@ function ComponentPlayground({
         </Grid.Column>
       </Grid>
 
-      <Grid centered>
+      <Grid stackable centered>
         <Grid.Column floated="left" width={3}>
           <div
             style={{
               height: "5vh",
-              marginLeft: "40%",
+              margin: "3% 10% 0",
+              textAlign: "center",
             }}
           >
             <StockDropdown
@@ -65,7 +66,16 @@ function ComponentPlayground({
           </div>
         </Grid.Column>
         <Grid.Column floated="right" width={3}>
-          <div style={{ height: "3vh", fontSize: "1.3rem" }}>{date}</div>
+          <div
+            style={{
+              height: "3vh",
+              margin: "3% 20% 0",
+              fontSize: "1.3rem",
+              textAlign: "center",
+            }}
+          >
+            {date}
+          </div>
         </Grid.Column>
       </Grid>
 
@@ -73,8 +83,8 @@ function ComponentPlayground({
         <Grid.Column width={4}>
           <div
             style={{
-              height: "55vh",
-              marginLeft: "10%",
+              marginLeft: "5%",
+              textAlign: "center",
             }}
           >
             <PrimaryInfo selectedTicker={selectedTicker} />
@@ -84,24 +94,15 @@ function ComponentPlayground({
         <Grid.Column width={8}>
           <div
             style={{
-              height: "40vh",
-              marginRight: "50%",
+              height: "50vh",
             }}
           >
             <Widget selectedTicker={selectedTicker} />
           </div>
         </Grid.Column>
 
-        <Grid.Column floated="left" width={4}>
-          <div
-            style={{
-              height: "40vh",
-              borderRadius: "1%",
-              width: "100%",
-            }}
-          >
-            <Snapshot companyMetrics={companyMetrics} />
-          </div>
+        <Grid.Column width={4}>
+          <Snapshot companyMetrics={companyMetrics} />
         </Grid.Column>
 
         <Grid.Row style={{}}>
@@ -110,13 +111,13 @@ function ComponentPlayground({
               <TAWidget selectedTicker={selectedTicker} />
             </div>
           </Grid.Column>
-          <Grid.Column width={8}>
+          {/* <Grid.Column width={8}>
             <Grid.Row>
               <div style={{ height: "30vh" }}>
                 <CompanyNews selectedTicker={selectedTicker} />
               </div>
             </Grid.Row>
-          </Grid.Column>
+          </Grid.Column> */}
         </Grid.Row>
       </Grid>
     </>

@@ -5,10 +5,11 @@ function MarketOverviewWidget() {
   return (
     <div>
       <MarketOverview
+        style={{ textAlign: "center" }}
         colorTheme="light"
         height={400}
         showFloatingTooltip
-      ></MarketOverview>
+      />
     </div>
   );
 }

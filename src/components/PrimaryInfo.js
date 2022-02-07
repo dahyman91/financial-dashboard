@@ -47,7 +47,7 @@ function PrimaryInfo({ selectedTicker }) {
         <div
           className="card"
           style={{
-            width: "20vw",
+            width: "100%",
             filter: "drop-shadow(1px 1px rgba(0,0,0,0.3))",
             border: "1px solid #EDD193",
           }}

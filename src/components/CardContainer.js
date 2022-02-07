@@ -18,7 +18,7 @@ function CardContainer({
   }, []);
   return (
     <div style={{ width: "90vw", margin: "0 auto" }}>
-      <div className="ui six column stackable grid">
+      <div className="ui four column stackable grid">
         {companyDetails.map((element) => (
           <Card
             key={element.name}

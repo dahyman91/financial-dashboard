@@ -126,13 +126,23 @@ function Card({
                     top: "10px",
                     right: "10px",
                     maxWidth: "50px",
+                    height: "auto",
                     borderRadius: "10%",
                   }}
                 />
-                <h2 className={className}>{`${price} USD`}</h2>
-                <h3 className="ticker">{id}</h3>
-                <p>{exchange}</p>
-                <p>{industry}</p>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <h2 className={className}>{`${price} USD`}</h2>
+                  <h3 className="ticker">{id}</h3>
+                  <p>{exchange}</p>
+                  <p>{industry}</p>
+                </div>
               </div>
             </div>
             <div

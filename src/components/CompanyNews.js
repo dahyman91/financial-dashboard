@@ -27,19 +27,22 @@ function CompanyNews({ selectedTicker }) {
       `https://finnhub.io/api/v1/company-news?symbol=${selectedTicker}&from=${startDate}&to=${endDate}&token=${API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => setNewsStories(data));
+      .then((data) => {
+        console.log(data);
+        setNewsStories(data);
+      });
   }, [selectedTicker, startDate, endDate]);
 
   return (
-    <div>
+    <div style={{ margin: "auto" }}>
       <h3 style={{ textAlign: "center" }}>Latest Company News:</h3>
       <Table
+        unstackable
         style={{
+          width: "100vw",
           border: "1px solid #EDD193",
           filter: "drop-shadow(1px 1px rgba(0,0,0,0.3))",
-          width: "100%",
         }}
-        celled
       >
         <Table.Body>
           <Table.Row>
@@ -48,7 +51,7 @@ function CompanyNews({ selectedTicker }) {
                 <img
                   alt=""
                   src={newsStories[0].image}
-                  style={{ maxWidth: "80px", borderRadius: "3px" }}
+                  style={{ borderRadius: "3px" }}
                 />
               ) : null}
             </Table.Cell>
@@ -72,7 +75,7 @@ function CompanyNews({ selectedTicker }) {
                 <img
                   alt=""
                   src={newsStories[1].image}
-                  style={{ maxWidth: "80px", borderRadius: "3px" }}
+                  style={{ borderRadius: "3px" }}
                 />
               ) : null}
             </Table.Cell>
@@ -96,7 +99,7 @@ function CompanyNews({ selectedTicker }) {
                 <img
                   alt=""
                   src={newsStories[2].image}
-                  style={{ maxWidth: "80px", borderRadius: "3px" }}
+                  style={{ borderRadius: "3px" }}
                 />
               ) : null}
             </Table.Cell>
@@ -120,7 +123,7 @@ function CompanyNews({ selectedTicker }) {
                 <img
                   alt=""
                   src={newsStories[3].image}
-                  style={{ maxWidth: "80px", borderRadius: "3px" }}
+                  style={{ borderRadius: "3px" }}
                 />
               ) : null}
             </Table.Cell>
