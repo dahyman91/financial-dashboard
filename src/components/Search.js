@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Dropdown } from "semantic-ui-react";
 import API_KEY from "../API";
-import { Input, Form, Message } from "semantic-ui-react";
+import { Input, Form, Message, Icon } from "semantic-ui-react";
 import AddFavoriteModal from "./AddFavoriteModal";
 function Search({
   setSearchedTickers,
@@ -10,6 +11,7 @@ function Search({
   setSelectedTicker,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [exchange, setExchange] = useState("NASDAQ");
   const [err, setErr] = useState("");
   const [header, setHeader] = useState("No Stock Added");
   const [loading, setLoading] = useState(false);
@@ -20,32 +22,70 @@ function Search({
       setSearchTerm(e.target.value);
     }
   }
+
+  const exchanges = [
+    {
+      key: "NASDAQ",
+      text: "NASDAQ",
+      value: "NASDAQ",
+    },
+    {
+      key: "NYSE",
+      text: "NYSE",
+      value: "NYSE",
+    },
+    {
+      key: "AMEX",
+      text: "AMEX",
+      value: "AMEX",
+    },
+    {
+      key: "EURONEXT",
+      text: "EURONEXT",
+      value: "EURONEXT",
+    },
+    {
+      key: "MUTUAL_FUND",
+      text: "MUTUAL_FUND",
+      value: "MUTUAL_FUND",
+    },
+  ];
+
   function handleSubmit(e) {
     setLoading(true);
     e.preventDefault();
     setElements([]);
     setErr("");
-    fetch(`https://finnhub.io/api/v1/search?q=${searchTerm}&token=${API_KEY}`)
+    fetch(
+      `https://financialmodelingprep.com/api/v3/search?query=${searchTerm}&limit=10&exchange=${exchange}&apikey=0570f7a36795da940b00fb234568a56d`
+    )
       .then((res) => res.json())
       .then((data) => {
-        for (let i = 0; i < 5; i++) {
-          data.result[i] &&
-            fetch(
-              `https://finnhub.io/api/v1/stock/profile2?symbol=${data.result[i].symbol}&token=${API_KEY}`
-            )
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.ticker && !data.ticker.includes(".")) {
-                  setElements((elements) => [
-                    ...elements,
-                    { name: data.name, symbol: data.ticker, logo: data.logo },
-                  ]);
-                }
+        if (!data.length) {
+          setLoading(false);
+          setOpen(true);
+        }
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i].symbol);
+          fetch(
+            `https://finnhub.io/api/v1/stock/profile2?symbol=${data[i].symbol}&token=${API_KEY}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              // let testArr = elements.map(e => e)
+              if (data.ticker && !data.ticker.includes(".")) {
+                console.log("hi", data);
+                setElements((elements) => [
+                  ...elements,
+                  { name: data.name, symbol: data.ticker, logo: data.logo },
+                ]);
                 setLoading(false);
                 setOpen(true);
-              });
+              }
+            });
         }
       });
+
     setSearchTerm("");
   }
   return (
@@ -67,19 +107,33 @@ function Search({
         <Form
           style={{
             paddingTop: "20px",
+            textAlign: "center",
           }}
           className="search-form"
           onSubmit={handleSubmit}
         >
+          <Form.Field>
+            <label>Select Exchange</label>
+            <Dropdown
+              placeholder="Select Friend"
+              style={{ text: "auto" }}
+              value={exchange}
+              onChange={(e) => setExchange(e.target.innerText)}
+              selection
+              options={exchanges}
+            />
+          </Form.Field>
+
           <Input
             loading={loading}
             size="big"
             onChange={handleInputChange}
             value={searchTerm}
-            placeholder="Track Stocks"
-            action={{ icon: "search" }}
+            placeholder="Search Stocks"
+            icon={<Icon name="search" circular link onClick={handleSubmit} />}
             style={{ border: "1px solid #EDD193", borderRadius: "8%" }}
           />
+
           <Message
             style={{ textAlign: "center" }}
             error={!err}

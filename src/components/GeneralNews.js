@@ -18,6 +18,7 @@ function GeneralNews() {
           border: "1px solid #EDD193",
           filter: "drop-shadow(1px 1px rgba(0,0,0,0.5))",
           width: "100%",
+          textAlign: "center",
         }}
       >
         <Table.Body>

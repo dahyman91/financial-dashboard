@@ -15,6 +15,12 @@ function AddFavoriteModal({
   setSearchedTickers,
   setElements,
 }) {
+  const uniqueSymbols = [...new Set(elements.map((item) => item.symbol))];
+
+  function symbolToElement(symbol) {
+    return elements.find((obj) => obj.symbol === symbol);
+  }
+
   return (
     <Modal
       basic
@@ -25,28 +31,26 @@ function AddFavoriteModal({
       dimmer="blurring"
     >
       {elements[0] ? (
-        elements
-          .filter((e) => e === elements[0] || e.symbol !== elements[0].symbol)
-          .map((element) => {
-            return (
-              <Table padded>
-                <Table.Body>
-                  <Option
-                    element={element}
-                    setLoading={setLoading}
-                    setErr={setErr}
-                    setHeader={setHeader}
-                    setSelectedTicker={setSelectedTicker}
-                    setCompanyDetails={setCompanyDetails}
-                    searchedTickers={searchedTickers}
-                    setSearchedTickers={setSearchedTickers}
-                    setElements={setElements}
-                    setOpen={setOpen}
-                  />
-                </Table.Body>
-              </Table>
-            );
-          })
+        uniqueSymbols.map((symbol) => {
+          return (
+            <Table padded>
+              <Table.Body>
+                <Option
+                  element={symbolToElement(symbol)}
+                  setLoading={setLoading}
+                  setErr={setErr}
+                  setHeader={setHeader}
+                  setSelectedTicker={setSelectedTicker}
+                  setCompanyDetails={setCompanyDetails}
+                  searchedTickers={searchedTickers}
+                  setSearchedTickers={setSearchedTickers}
+                  setElements={setElements}
+                  setOpen={setOpen}
+                />
+              </Table.Body>
+            </Table>
+          );
+        })
       ) : (
         <div>
           <Message color="red" info>
