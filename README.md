@@ -30,7 +30,7 @@ Track stocks from different exchanges, add them to a portfolio or see advanced t
 
 ## Live Site
 
--[Deployed to Netlify](fancial-dashboard-project.netlify.app)
+-[Deployed to Netlify](https://financial-dashboard-project.netlify.app/)
 
 ## Getting Started
 
