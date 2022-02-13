@@ -14,8 +14,7 @@ A React dashboard ready to help you make those gains!
 ## Demo
 
 <p align="center">
-![](https://media0.giphy.com/media/3DVOm2yApNXKGOMdFb/giphy.gif?cid=790b761178188cfae2c7091780b4d2cb75a392c2b3b6747f&rid=giphy.gif&ct=g)
-
+  <img src="https://media0.giphy.com/media/3DVOm2yApNXKGOMdFb/giphy.gif?cid=790b761178188cfae2c7091780b4d2cb75a392c2b3b6747f&rid=giphy.gif&ct=g" alt="animated" />
 </p>
 
 ## About the project
