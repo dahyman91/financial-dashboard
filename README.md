@@ -1,31 +1,34 @@
 # React Financial Dashboard
 
-A react dashboard ready to help you make those gains
+A React dashboard ready to help you make those gains!
+
+## Table of Contents
+
+- [Demo](#demo)
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Live Site](#Live Site)
+  - [Run Locally](#run-locally)
 
 ## Demo
 
 ![](https://media0.giphy.com/media/3DVOm2yApNXKGOMdFb/giphy.gif?cid=790b761178188cfae2c7091780b4d2cb75a392c2b3b6747f&rid=giphy.gif&ct=g)
 
-## Table of Contents
-
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Run Locally](#run-locally)
-- [Roadmap](#roadmap)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
-
 ## About the project
 
-### Built With
+Track stocks from different exchanges, add them to a portfolio or see advanced technical details on the dashboard.
 
-List of major Frameworks used to create our projects
+### Built With
 
 - [React JS](https://reactjs.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [React Chart.js 2](https://reactchartjs.github.io/react-chartjs-2/#/)
 - [Semantic UI React](https://react.semantic-ui.com/)
+
+## Live Site
+
+-[Deployed to Netlify](fancial-dashboard-project.netlify.app)
 
 ## Getting Started
 
@@ -58,15 +61,3 @@ Start the app
 ```bash
   npm start
 ```
-
-You are not good to go!
-
-## Roadmap
-
-## Contributing
-
-Contributions are not currently available
-
-## Contact
-
-## Acknowledgements
