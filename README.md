@@ -8,7 +8,7 @@ A React dashboard ready to help you make those gains!
 - [About the Project](#about-the-project)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Live Site](#Live Site)
+  - [Live Site](#Live-Site)
   - [Run Locally](#run-locally)
 
 ## Demo
