@@ -19,14 +19,14 @@ A React dashboard ready to help you make those gains!
 
 ## About the project
 
-Track stocks from different exchanges, add them to a portfolio or see advanced technical details on the dashboard.
+Track stocks from different exchanges, add them to a portfolio or see advanced technical details on the dashboard. This project was build to demonstrate the ability to work with external APIs. Specifically, we use the [Finnhub API](https://finnhub.io/) and the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs). Additionally, we impleted a number of widgets provided by [TradingView](https://www.tradingview.com/).
 
 ### Built With
 
 - [React JS](https://reactjs.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [React Chart.js 2](https://reactchartjs.github.io/react-chartjs-2/#/)
-- [Semantic UI React](https://react.semantic-ui.com/)
+- [Semantic UI React](https://react.semantic-ui.com/) -[TradingView React Widgets](https://jorrinkievit.github.io/react-ts-tradingview-widgets/docs/intro)
 
 ## Live Site
 
@@ -50,12 +50,6 @@ Install dependencies
 
 ```bash
   npm install
-```
-
-Start the server
-
-```bash
-  npm run server
 ```
 
 Start the app
