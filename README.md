@@ -19,7 +19,7 @@ A React dashboard ready to help you make those gains!
 
 ## About the project
 
-Track stocks from different exchanges, add them to a portfolio or see advanced technical details on the dashboard. This project was build to demonstrate the ability to work with external APIs. Specifically, we use the [Finnhub API](https://finnhub.io/) and the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs). Additionally, we impleted a number of widgets provided by [TradingView](https://www.tradingview.com/).
+Track stocks from different exchanges, add them to a portfolio or see advanced technical details on the dashboard. This project was built to demonstrate the ability to work with external APIs. Specifically, the [Finnhub API](https://finnhub.io/) and the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs) were used. Additionally, a number of widgets provided by [TradingView](https://www.tradingview.com/) were implemented.
 
 ### Built With
 
